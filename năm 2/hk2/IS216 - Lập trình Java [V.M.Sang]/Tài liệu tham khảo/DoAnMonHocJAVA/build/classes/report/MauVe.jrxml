@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="555" pageHeight="802" columnWidth="483" leftMargin="36" rightMargin="36" topMargin="36" bottomMargin="36" uuid="59c868f9-a9b9-4bd1-be08-e377960b5683">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MAVE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select tenphim,concat(soghe,hangghe),ghe.maphong,gia,to_char(ngaychieu,'dd/mm/yyyy'),to_char(thoigianbd,'hh24:mi:ss')
+from phim,ghe,phong,datve,lichchieu,suatchieu
+where mave =$P{MAVE} and phim.maphim = lichchieu.maphim and ghe.maghe = datve.maghe and datve.malichchieu = lichchieu.malichchieu and lichchieu.masuat = suatchieu.masuat]]>
+	</queryString>
+	<field name="TENPHIM" class="java.lang.String"/>
+	<field name="CONCAT(SOGHE,HANGGHE)" class="java.lang.String"/>
+	<field name="MAPHONG" class="java.math.BigDecimal"/>
+	<field name="GIA" class="java.math.BigDecimal"/>
+	<field name="TO_CHAR(NGAYCHIEU,&apos;DD/MM/YYYY&apos;)" class="java.lang.String"/>
+	<field name="TO_CHAR(THOIGIANBD,&apos;HH24:MI:SS&apos;)" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="507" splitType="Stretch">
+			<staticText>
+				<reportElement x="43" y="45" width="407" height="35" forecolor="#666666" uuid="9040cc40-e161-447c-a254-f3f349120d10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="24"/>
+				</textElement>
+				<text><![CDATA[RẠP CHIẾU PHIM CGV THỦ ĐỨC]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="126" height="45" uuid="42c7a6c8-1ba9-412b-8524-31ce03f073c8"/>
+				<imageExpression><![CDATA["C:\\Users\\Nguyen Minh Nhut\\Downloads\\CGV_Logo_Global_BI_V9-02.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="43" y="93" width="407" height="35" forecolor="#000000" uuid="cd87f070-b0da-4513-943e-6c16f38c676c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VÉ XEM PHIM (TICKET)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="128" width="480" height="35" forecolor="#000000" uuid="03581c7e-9a1c-4417-a609-124d8aa92c5c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[========================================]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="163" width="142" height="35" forecolor="#000000" uuid="70c44056-0108-42d8-b8bb-b89b0d518d96"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TÊN PHIM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="163" width="372" height="35" uuid="80e18623-c9d4-48aa-bc85-1abd1f934e80"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TENPHIM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="208" width="190" height="35" uuid="6fc4ebac-7e16-44e7-8683-63c35398832c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CONCAT(SOGHE,HANGGHE)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="208" width="142" height="35" forecolor="#000000" uuid="7c468377-e995-4a49-a112-0ce88284b360"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SỐ GHẾ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="259" width="170" height="35" forecolor="#000000" uuid="d05aa8ad-1c8b-4036-9e25-8afc27359c63"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GIÁ TIỀN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="259" width="100" height="35" uuid="a8debbe9-2708-4dff-a571-46a1acbda121"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GIA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="208" width="170" height="35" forecolor="#000000" uuid="b3ec38fb-36ff-4d8c-99b5-f2d9c8d23a7d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PHÒNG]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="342" y="208" width="141" height="35" uuid="e7eda999-1ba8-469c-978d-81a08d9b53e9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAPHONG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="198" y="10" width="170" height="35" forecolor="#000000" uuid="df290132-f58f-4514-9289-6f25174ba0b3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MÃ VÉ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="298" y="10" width="100" height="35" uuid="145f0eea-5fe5-4bcf-b540-0858ee70f507"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MAVE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="319" width="170" height="35" forecolor="#000000" uuid="323300b0-6cb0-4754-8010-8c6e857b7a41"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NGÀY GIỜ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="319" width="172" height="35" uuid="400f2c1b-7067-4321-a3c1-3d113e376f11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TO_CHAR(NGAYCHIEU,'DD/MM/YYYY')}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="298" y="319" width="185" height="35" uuid="236d4d44-4107-41af-9901-1d51f2f63070"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TO_CHAR(THOIGIANBD,'HH24:MI:SS')}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="354" width="483" height="35" forecolor="#000000" uuid="4493b585-037f-4cf2-bd7e-0be4b7b1bf8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[======================================]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="389" width="40" height="20" uuid="dcccbd5e-be3d-4f39-9b16-4db38577cc01"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Lưu ý:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="389" width="382" height="67" uuid="cf985023-b6c7-4ddf-bddf-af240a37a838"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="13" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Khách hàng giữ lại vé điện tử bằng cách chụp hình, khi đến quầy nhập user password và mã vé của khách hàng (tình trạng là chưa in) máy sẽ tự trả vé cho khách hàng. Xin cảm ơn đã phục vụ khách hàng!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="447" width="483" height="35" forecolor="#000000" uuid="5b364928-b9c7-4ec1-a866-d509e45b2871"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[======================================]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="37" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="342" y="0" width="141" height="35" uuid="f55f492f-6d15-4a5e-87a3-384af7d30048"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="232" y="0" width="170" height="35" forecolor="#000000" uuid="5669090e-319b-4869-88cc-01261292d1d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thời gian in]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

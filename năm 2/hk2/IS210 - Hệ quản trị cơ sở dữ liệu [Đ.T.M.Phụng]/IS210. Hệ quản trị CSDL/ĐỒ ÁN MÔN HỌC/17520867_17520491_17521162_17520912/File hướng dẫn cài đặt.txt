@@ -1,0 +1,9 @@
+Mở IDE Netbeans, Cài đặt các thư viện, công cụ ireport
+--------------------------
+Chạy DoAnMonHoc >> Source Packages >> DangNhap.java
+Tài khoản quản trị viên: admin mật khẩu: admin
+Tài khoản thành viên khách hàng có thể đăng kí
+--------------------------
+cài đặt thông số jdbc trong oracle 
+DoAnMonHoc >> dao >> ConnectionOracle.java
+---------------------------

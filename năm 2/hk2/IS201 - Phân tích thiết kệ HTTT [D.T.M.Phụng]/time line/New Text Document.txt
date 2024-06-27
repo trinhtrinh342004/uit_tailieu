@@ -1,0 +1,9 @@
+Tuần 8: 11/4/2024: Thi GK gồm lí thuyết (giấy 90p) và áy (lap cá nhân)
+Tuần 5,6: ôn thi giữa kì
+Tuần 7: 4/4/2024 (sv trình bày đồ án môn học)
++ Phát biểu bài toán
++ Yêu cầu phi/ko chức năng 
++ Mô hình thực thể mối kết hợp
++ Trigger
++ Stored Procedure
++ Function

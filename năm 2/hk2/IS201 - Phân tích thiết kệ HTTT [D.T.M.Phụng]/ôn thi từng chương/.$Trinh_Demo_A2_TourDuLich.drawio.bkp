@@ -1,0 +1,407 @@
+<mxfile host="Electron" modified="2024-03-29T03:46:56.580Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="wOCNDBeJz-YjqkCPFqjW" version="22.0.2" type="device" pages="3">
+  <diagram name="Mức ngữ cảnh" id="stB1hj4GoClHDiYHLq5c">
+    <mxGraphModel dx="1776" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-23" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="570" as="sourcePoint" />
+            <mxPoint x="870" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Xq8taOPVHb-SJBGlJNom-2" value="Thông tin hợp đồng" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="6VQh9xxoTZbk81UuETEJ-23">
+          <mxGeometry x="-0.0814" relative="1" as="geometry">
+            <mxPoint x="30" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;curved=1;exitX=0.919;exitY=0.231;exitDx=0;exitDy=0;exitPerimeter=0;fontStyle=1" parent="1" source="6VQh9xxoTZbk81UuETEJ-1" target="6VQh9xxoTZbk81UuETEJ-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="500" />
+              <mxPoint x="895" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Xq8taOPVHb-SJBGlJNom-1" value="Thông tin phiếu đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="6VQh9xxoTZbk81UuETEJ-25">
+          <mxGeometry x="-0.0587" y="2" relative="1" as="geometry">
+            <mxPoint x="12" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VWgRydys-SvTaBng3-Us-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;curved=1;exitX=1;exitY=1;exitDx=0;exitDy=0;fontStyle=1" parent="1" source="6VQh9xxoTZbk81UuETEJ-1" target="6VQh9xxoTZbk81UuETEJ-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="492" y="630" />
+              <mxPoint x="895" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J8jrhFNv5A4Nt8QvAvz2-2" value="Báo cáo thống kê" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="VWgRydys-SvTaBng3-Us-1">
+          <mxGeometry x="-0.1128" y="-2" relative="1" as="geometry">
+            <mxPoint x="25" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-1" value="&lt;span&gt;0&lt;br&gt;Xử lý của hệ thống Dịch vụ đặt tour du lịch&amp;nbsp;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;shadow=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="390" y="500" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;curved=1;fontStyle=1" parent="1" source="6VQh9xxoTZbk81UuETEJ-4" target="6VQh9xxoTZbk81UuETEJ-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="650" />
+              <mxPoint x="408" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-22" value="Thông tin của khách hàng" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="6VQh9xxoTZbk81UuETEJ-5" vertex="1" connectable="0">
+          <mxGeometry x="-0.217" y="-1" relative="1" as="geometry">
+            <mxPoint x="61" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;curved=1;fontStyle=1" parent="1" source="6VQh9xxoTZbk81UuETEJ-4" target="6VQh9xxoTZbk81UuETEJ-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="490" />
+              <mxPoint x="408" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-21" value="Thông tin tour du lịch" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="6VQh9xxoTZbk81UuETEJ-18" vertex="1" connectable="0">
+          <mxGeometry x="-0.0409" relative="1" as="geometry">
+            <mxPoint x="10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-4" value="Khách hàng" style="html=1;dashed=0;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=default;gradientColor=none;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry y="535" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6VQh9xxoTZbk81UuETEJ-13" value="Công ty" style="html=1;dashed=0;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=default;gradientColor=none;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="870" y="535" width="100" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="YIIDgyBz0XuAr3vt4Ykw" name="Mức 1">
+    <mxGraphModel dx="4180" dy="1430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-13" target="mhhGK7A9Ll85HWTt4RAD-17" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-10" value="Thông tin khách&amp;nbsp;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;du lịch đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.217" y="-1" relative="1" as="geometry">
+            <mxPoint x="15" y="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-11" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-13" target="mhhGK7A9Ll85HWTt4RAD-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-12" value="Thông tin yêu cầu &lt;br&gt;đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-11" vertex="1" connectable="0">
+          <mxGeometry x="-0.0409" relative="1" as="geometry">
+            <mxPoint y="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-13" value="Khách hàng" style="html=1;dashed=0;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=default;gradientColor=none;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry y="70" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-16" value="Công ty" style="html=1;dashed=0;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=default;gradientColor=none;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="920" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-27" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-17" target="mhhGK7A9Ll85HWTt4RAD-26" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="910" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-4" value="Thông tin khách&amp;nbsp;&lt;br&gt;du lịch đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-27" vertex="1" connectable="0">
+          <mxGeometry x="-0.0912" relative="1" as="geometry">
+            <mxPoint x="-18" y="-24" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-41" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;exitX=0.25;exitY=0.958;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-26" target="mhhGK7A9Ll85HWTt4RAD-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-42" value="Thông tin khách&amp;nbsp;&lt;br&gt;du lịch đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-41" vertex="1" connectable="0">
+          <mxGeometry x="-0.1106" y="2" relative="1" as="geometry">
+            <mxPoint x="-4" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-17" value="&lt;span&gt;2&lt;br&gt;&lt;br&gt;&lt;/span&gt;Tiếp nhận thông tin khách du lịch đặt tour" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="315" y="50" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-18" value="&lt;span&gt;4&lt;br&gt;&lt;br&gt;Xử lý tiền đặt&amp;nbsp;&lt;br&gt;tour du lịch&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="755" width="105" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-33" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;fontStyle=1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-19" target="mhhGK7A9Ll85HWTt4RAD-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-36" value="Thông tin &lt;br&gt;tour du lịch" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-33" vertex="1" connectable="0">
+          <mxGeometry x="-0.2965" y="2" relative="1" as="geometry">
+            <mxPoint x="33" y="41" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-19" value="&lt;span&gt;1&lt;br&gt;&lt;br&gt;Chọn tour du lịch&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="-5" y="390" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-20" value="Tour du lịch" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=right;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="-5" y="905" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-21" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontStyle=1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-20" target="mhhGK7A9Ll85HWTt4RAD-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-28" value="Danh sách &lt;br&gt;tour du lịch" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-21" vertex="1" connectable="0">
+          <mxGeometry x="-0.1213" relative="1" as="geometry">
+            <mxPoint y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-25" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;entryX=0.852;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-22" target="mhhGK7A9Ll85HWTt4RAD-24" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P2aX-K7mmESSMrduBrNr-3" value="Thông tin &lt;br&gt;phiếu đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-25" vertex="1" connectable="0">
+          <mxGeometry x="-0.0954" y="-1" relative="1" as="geometry">
+            <mxPoint x="-29" y="-115" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wktxizNC-IkErKwymRXP-4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-24" target="OcfvzX3tOw5j2LcAt_tg-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P2aX-K7mmESSMrduBrNr-2" value="Thông tin &lt;br&gt;phiếu đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="wktxizNC-IkErKwymRXP-4" vertex="1" connectable="0">
+          <mxGeometry x="-0.2219" relative="1" as="geometry">
+            <mxPoint x="-1" y="8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-22" value="&lt;span&gt;3&lt;br&gt;&lt;br&gt;&lt;/span&gt;Tạo Phiếu đặt tour" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="1359.9999999999998" y="89.99999999999997" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-24" value="Phiếu đặt tour" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=right;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1000" y="780" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-30" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.24;entryY=0.088;entryDx=0;entryDy=0;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-26" target="mhhGK7A9Ll85HWTt4RAD-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-31" value="Thông tin khách&amp;nbsp;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;du lịch đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-30" vertex="1" connectable="0">
+          <mxGeometry x="-0.2407" y="-1" relative="1" as="geometry">
+            <mxPoint x="139" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=1;exitX=0.109;exitY=1.179;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-26" target="mhhGK7A9Ll85HWTt4RAD-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-12" value="Thông tin khách&amp;nbsp;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;&quot;&gt;du lịch đặt tour&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="Tcql2RAJ9dwNZ-GDl28H-11">
+          <mxGeometry x="0.355" y="22" relative="1" as="geometry">
+            <mxPoint x="-4" y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-26" value="Khách du lịch đặt tour" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=right;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="610" y="80" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wktxizNC-IkErKwymRXP-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;exitX=0.053;exitY=0.287;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.66;entryY=1.1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-37" target="mhhGK7A9Ll85HWTt4RAD-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wktxizNC-IkErKwymRXP-3" value="Giá đặt cọc &lt;br&gt;tour&amp;nbsp; du lịch" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="wktxizNC-IkErKwymRXP-2" vertex="1" connectable="0">
+          <mxGeometry x="-0.4449" y="1" relative="1" as="geometry">
+            <mxPoint x="24" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.029;exitY=0.405;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-37" target="0MI27KqPl3iqrzEQez-F-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-2" value="Tình trạng &lt;br&gt;&quot;Không ký hợp đồng&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="Tcql2RAJ9dwNZ-GDl28H-1">
+          <mxGeometry x="-0.0918" y="2" relative="1" as="geometry">
+            <mxPoint x="58" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-37" target="mhhGK7A9Ll85HWTt4RAD-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-4" value="&lt;b&gt;Tình trạng&amp;nbsp;&lt;br&gt;&quot;Ký hợp đồng&quot;&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Tcql2RAJ9dwNZ-GDl28H-3">
+          <mxGeometry x="-0.133" y="1" relative="1" as="geometry">
+            <mxPoint x="10" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-37" value="&lt;span&gt;5&lt;br&gt;&lt;br&gt;Xác nhận đặt cọc của khách du lịch đặt tour&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="530.28" y="368.46999999999997" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="2HgEzWChnbELt7E2pmds-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.947;exitY=0.306;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-43" target="2HgEzWChnbELt7E2pmds-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HgEzWChnbELt7E2pmds-7" value="Tình trạng &lt;br&gt;hợp đồng" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontFamily=Helvetica;fontColor=default;fontStyle=1" parent="2HgEzWChnbELt7E2pmds-3" vertex="1" connectable="0">
+          <mxGeometry x="-0.1576" y="-1" relative="1" as="geometry">
+            <mxPoint x="120" y="-72" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-43" value="&lt;span&gt;6&lt;br&gt;&lt;br&gt;Tạo hợp đồng&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="720" y="590" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-44" value="Hợp đồng" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=right;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="450" y="710" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-45" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-43" target="mhhGK7A9Ll85HWTt4RAD-44" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-51" value="Thông tin&lt;br&gt;&amp;nbsp;hợp đồng" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-45" vertex="1" connectable="0">
+          <mxGeometry x="-0.1325" relative="1" as="geometry">
+            <mxPoint x="-16" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-46" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;fontStyle=1;entryX=0.372;entryY=0.024;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-13" target="mhhGK7A9Ll85HWTt4RAD-37" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="536" y="392.9999999999999" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mhhGK7A9Ll85HWTt4RAD-47" value="Thông tin &lt;br&gt;xác nhận" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="mhhGK7A9Ll85HWTt4RAD-46" vertex="1" connectable="0">
+          <mxGeometry x="-0.4544" y="-1" relative="1" as="geometry">
+            <mxPoint x="62" y="28" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0MI27KqPl3iqrzEQez-F-1" value="&lt;span&gt;8&lt;br&gt;&lt;br&gt;Cập nhật phiếu đặt tour&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fillStyle=auto;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="960" y="340" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="0MI27KqPl3iqrzEQez-F-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;entryX=0.587;entryY=0.083;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="0MI27KqPl3iqrzEQez-F-1" target="mhhGK7A9Ll85HWTt4RAD-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0MI27KqPl3iqrzEQez-F-3" value="Tình trạng&lt;br&gt;&amp;nbsp;hợp đồng" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="0MI27KqPl3iqrzEQez-F-2" vertex="1" connectable="0">
+          <mxGeometry x="-0.2567" relative="1" as="geometry">
+            <mxPoint x="10" y="104" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0MI27KqPl3iqrzEQez-F-6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-18" target="mhhGK7A9Ll85HWTt4RAD-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0MI27KqPl3iqrzEQez-F-7" value="Giá đặt cọc &lt;br&gt;tour du lịch" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="0MI27KqPl3iqrzEQez-F-6" vertex="1" connectable="0">
+          <mxGeometry x="-0.5172" y="3" relative="1" as="geometry">
+            <mxPoint x="46" y="-71" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0MI27KqPl3iqrzEQez-F-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.395;entryY=1.023;entryDx=0;entryDy=0;entryPerimeter=0;fontStyle=1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-43" target="0MI27KqPl3iqrzEQez-F-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0MI27KqPl3iqrzEQez-F-10" value="Tình trạng &lt;br&gt;hợp đồng" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="0MI27KqPl3iqrzEQez-F-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.1426" y="1" relative="1" as="geometry">
+            <mxPoint x="16" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="OcfvzX3tOw5j2LcAt_tg-1" target="mhhGK7A9Ll85HWTt4RAD-16" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1009.9958913677469" y="922.1790270337468" as="sourcePoint" />
+            <mxPoint x="1350" y="917.82" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-3" value="Thông tin báo cáo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="OcfvzX3tOw5j2LcAt_tg-2" vertex="1" connectable="0">
+          <mxGeometry x="-0.3178" y="-1" relative="1" as="geometry">
+            <mxPoint x="17" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;exitX=0.375;exitY=1.167;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-26" target="mhhGK7A9Ll85HWTt4RAD-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-11" value="Thông tin khách&lt;br&gt;&amp;nbsp;du lịch đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="OcfvzX3tOw5j2LcAt_tg-7" vertex="1" connectable="0">
+          <mxGeometry x="0.2436" y="2" relative="1" as="geometry">
+            <mxPoint x="-12" y="-81" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;entryX=1.021;entryY=0.593;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="mhhGK7A9Ll85HWTt4RAD-24" target="mhhGK7A9Ll85HWTt4RAD-43" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="871.28" y="629.47" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-6" value="Thông tin phiếu&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;đặt tour&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="OcfvzX3tOw5j2LcAt_tg-9">
+          <mxGeometry x="0.0272" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-13" value="Khách du lịch mới" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=right;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1170" y="590" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-14" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;" parent="1" source="2HgEzWChnbELt7E2pmds-1" target="OcfvzX3tOw5j2LcAt_tg-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-15" value="Thông tin khách&amp;nbsp;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;hàng mới" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="OcfvzX3tOw5j2LcAt_tg-14" vertex="1" connectable="0">
+          <mxGeometry x="-0.1473" relative="1" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2HgEzWChnbELt7E2pmds-1" value="&lt;span&gt;7&lt;br&gt;&lt;br&gt;Cập nhật khách hàng mới&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="1239.9999999999998" y="348.46999999999997" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="2HgEzWChnbELt7E2pmds-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="OcfvzX3tOw5j2LcAt_tg-13" target="OcfvzX3tOw5j2LcAt_tg-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HgEzWChnbELt7E2pmds-4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" target="2HgEzWChnbELt7E2pmds-1" edge="1" source="mhhGK7A9Ll85HWTt4RAD-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="740" as="sourcePoint" />
+            <mxPoint x="554" y="478" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2HgEzWChnbELt7E2pmds-5" value="Thông tin khách&amp;nbsp;&lt;br&gt;du lịch đặt tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" parent="2HgEzWChnbELt7E2pmds-4" vertex="1" connectable="0">
+          <mxGeometry x="0.2436" y="2" relative="1" as="geometry">
+            <mxPoint x="-19" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-8" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1" edge="1" parent="1" source="mhhGK7A9Ll85HWTt4RAD-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="345" y="920" as="sourcePoint" />
+            <mxPoint x="1000" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tcql2RAJ9dwNZ-GDl28H-9" value="Tổng tiền tour" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="Tcql2RAJ9dwNZ-GDl28H-8">
+          <mxGeometry x="-0.336" y="8" relative="1" as="geometry">
+            <mxPoint x="126" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OcfvzX3tOw5j2LcAt_tg-1" value="&lt;span&gt;9&lt;br&gt;&lt;br&gt;Tạo báo cáo thống kê&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="1015" y="905" width="100" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="OmaY96GTwjrDfDBg87y8" name="Các xử lý chi tiết">
+    <mxGraphModel dx="1665" dy="715" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-10" value="" style="html=1;dashed=0;whiteSpace=wrap;fillStyle=auto;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;opacity=80;" parent="1" vertex="1">
+          <mxGeometry x="180" y="160" width="880" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-1" value="&lt;span&gt;2&lt;br&gt;&lt;br&gt;&lt;/span&gt;Tiếp nhận thông tin khách du lịch đặt tour" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="240" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-2" value="&lt;span&gt;4&lt;br&gt;&lt;br&gt;Xử lý thanh toán hóa đơn&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="740" y="245" width="105" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-3" value="&lt;span&gt;1&lt;br&gt;&lt;br&gt;Chọn tour du lịch&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="240" y="240" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-4" value="&lt;span&gt;3&lt;br&gt;&lt;br&gt;&lt;/span&gt;Tạo Phiếu đặt tour" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="570" y="240" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-5" value="&lt;span&gt;5&lt;br&gt;&lt;br&gt;Xác nhận đặt cọc của khách du lịch đặt tour&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="240" y="400" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-6" value="&lt;span&gt;6&lt;br&gt;&lt;br&gt;Tạo hợp đồng&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="400" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-7" value="&lt;span&gt;8&lt;br&gt;&lt;br&gt;Cập nhật phiếu đặt tour&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fillStyle=auto;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="742.5" y="400" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-8" value="&lt;span&gt;9&lt;br&gt;&lt;br&gt;Tạo báo cáo thống kê&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="900" y="400" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-9" value="&lt;span&gt;7&lt;br&gt;&lt;br&gt;Cập nhật khách hàng mới&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;shadow=1;noLabel=0;connectable=1;backgroundOutline=0;resizeWidth=0;resizeHeight=0;treeMoving=0;" parent="1" vertex="1">
+          <mxGeometry x="570" y="400" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqBSQx1f-nDrAvx2CQCL-11" value="Các bước xử lý chi tiết:&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Helvetica;fontColor=#000000;fontStyle=1;spacing=4;" parent="1" vertex="1">
+          <mxGeometry x="240" y="180" width="260" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

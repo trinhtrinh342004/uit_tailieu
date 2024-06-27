@@ -1,0 +1,2 @@
+1. làm sao giải quyết khi tất cả các quan hệ trên cơ sở dữ liệu đều có khóa ngoại tham chiếu đến nhau?
+==> cài đặt khóa chính cho từng bảng trước tiếp theo mới dùng ALTER thêm các khoa ngoại tham chiếu đến

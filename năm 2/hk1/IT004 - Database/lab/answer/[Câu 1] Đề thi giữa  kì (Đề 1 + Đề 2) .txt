@@ -1,0 +1,32 @@
+[Câu 1] Đề thi giữa  kì (Đề 1 + Đề 2)
+
+******ĐỀ 1
+1.
+a) 
+ALTER TABLE LOAIXANG 
+ADD CONSTRAINT CHECK_MDBQ CHECK (MDBQ IN ('IA', 'IB', 'II', 'III', 'IV', 'V')
+b)
+UPDATE XANGDAU
+SET GIACOSO = GIACOSO*1.1
+WHERE TENXD = 'Xăng không chỉ R95'
+c)
+DELETE FROM DNNK
+WHERE (MADN = 'DN001') AND (LOAIDN = 'Tư nhân')
+
+2.
+a)
+
+****** ĐỀ 2
+1.
+a)
+ALTER TABLE CUAHANG
+ADD CONTRAINT CHECK_CAOMC CHECK (CAOMC >= 4.75)
+
+b) 
+UPDATE XANGDAU
+SET GIACOSO = GIACOSO*0.9
+WHERE TENXD = 'Xăng không chỉ E95'
+
+c) 
+DELETE FROM DNNK
+WHERE (MADN = 'DN003') AND (LOAIDN = 'Nhà nước')

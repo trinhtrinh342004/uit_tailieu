@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="38e4c7b8-7acf-4e01-8b59-5c8e28ad7d5d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from khachhang,datve
+where khachhang.makh = datve.makh
+order by khachhang.makh]]>
+	</queryString>
+	<field name="MAKH" class="java.math.BigDecimal"/>
+	<field name="HO" class="java.lang.String"/>
+	<field name="TEN" class="java.lang.String"/>
+	<field name="MAVE" class="java.math.BigDecimal"/>
+	<field name="GIA" class="java.math.BigDecimal"/>
+	<field name="NGAYBAN" class="java.sql.Timestamp"/>
+	<variable name="GIA_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GOMNHOMKHACH" calculation="Sum">
+		<variableExpression><![CDATA[$F{GIA}]]></variableExpression>
+	</variable>
+	<group name="GOMNHOMKHACH">
+		<groupExpression><![CDATA[$F{MAKH}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="0" y="0" width="112" height="50" uuid="3ad8e210-0452-47d5-bfae-c62a148efbe3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{MAKH}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="112" y="0" width="112" height="50" uuid="30892089-49fc-4944-b990-47118717185f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{HO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="224" y="0" width="112" height="50" uuid="004c4881-fa4a-497d-9c47-3b6ec1437a03"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{TEN}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<staticText>
+					<reportElement x="434" y="0" width="167" height="48" uuid="e5921918-cdf4-4558-9323-7547f06ac9b4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="22" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Tổng giá vé]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="601" y="0" width="118" height="48" uuid="821ebc80-df14-4ae8-8fd6-5e85f1834231"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{GIA_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="219" y="0" width="341" height="50" uuid="e96aa3dc-a48e-49b0-9130-90d02fb16331"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[THÔNG TIN KHÁCH HÀNG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="45" uuid="bf0957bc-7841-4ea3-9dfa-bac19789acbe"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="112" height="45" uuid="5f8f9fb8-92f0-4e9a-983c-751e06c64d1a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Mã KH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="0" width="112" height="45" uuid="fd3b25e4-0b75-400e-a6b3-60412c8c8a53"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Họ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="0" width="112" height="45" uuid="56f94a5d-0ee4-4cc8-aca9-fc343df4cd52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Tên]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="0" width="112" height="45" uuid="5208eb74-4cc2-46d4-ae9a-6142e1d24c61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Mã vé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="471" y="0" width="112" height="45" uuid="a22eb53d-90b1-4796-8df3-a3140faaa525"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Giá vé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="583" y="0" width="136" height="45" uuid="8084a0af-8d64-4074-a452-c071360662bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Ngày mua]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="371" y="0" width="100" height="30" uuid="1559bb72-f2a8-4f7e-b8ca-943a8cc287d7"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="471" y="0" width="112" height="30" uuid="1213aeb6-e173-4787-b17a-63aa5209206a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="583" y="0" width="136" height="30" uuid="ce3a1994-3a21-43c2-bb73-fb617312de1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NGAYBAN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,19 @@
+<mxfile host="Electron" modified="2024-03-15T06:47:12.622Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="8ETRLGL4H0oA9L6T-GLF" version="22.0.2" type="device">
+  <diagram name="Page-1" id="AhKNPWFubmrbZYYIvsSB">
+    <mxGraphModel dx="520" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cJ_yDkRFG2cfCOG-L-yD-2" value="" style="shape=ellipse;html=1;dashed=0;whiteSpace=wrap;aspect=fixed;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="190" y="260" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cJ_yDkRFG2cfCOG-L-yD-4" value="" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];" vertex="1" parent="1">
+          <mxGeometry x="90" y="390" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cJ_yDkRFG2cfCOG-L-yD-5" value="" style="html=1;dashed=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="100" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
