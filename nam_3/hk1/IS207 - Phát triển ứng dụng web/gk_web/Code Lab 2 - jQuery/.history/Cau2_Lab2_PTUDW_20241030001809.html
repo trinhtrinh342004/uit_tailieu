@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bai2</title>
+  <style>
+    .menu {
+      background-color: #D1FF00;
+      border-collapse: collapse;
+      border: 2px solid #6a8106;
+    }
+
+    td,
+    th {
+      border: 2px solid #6a8106;
+    }
+
+    table .title {
+      font-weight: 600;
+      color: blue;
+    }
+
+    .bill {
+      margin-top: 20px;
+      border-collapse: collapse;
+      background-color: #9BF1F2;
+      border: 4px solid #88a40c;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form method='post'>
+    <table class='menu'>
+      <tr height='30px'>
+        <th colspan='3'>
+          <h2>THỰC ĐƠN</h2>
+        </th>
+      </tr>
+      <tr class='title'>
+        <td>Thức ăn</td>
+        <td>Nước uống</td>
+        <td>Thời điểm</td>
+      </tr>
+      <tr>
+        <td>
+          <select size='7' name="food" id="food" multiple>
+            <option value="bunbo">Bún bò</option>
+            <option value="hutieu">Hủ tiếu</option>
+            <option value="banhcanh">Bánh canh</option>
+            <option value="phobo">Phở bò</option>
+            <option value="nuoi">Nuôi</option>
+            <option value="banhmithit">Bánh mì thịt</option>
+            <option value="banhcuon">Bánh cuốn</option>
+          </select>
+        </td>
+        <td>
+          <select size='7' name="drink" id="drink" multiple>
+            <option value="cfda">Cà phê đá</option>
+            <option value="cfsuada">Cà phê sữa đá</option>
+            <option value="chanhday">Chanh dây</option>
+            <option value="chanhmuoi">Chanh muối</option>
+            <option value="ximuoi">Xí muội</option>
+            <option value="suatuoi">Sữa tươi</option>
+            <option value="camvat">Cam vắt</option>
+          </select>
+        </td>
+        <td width='150px'>
+          <input type="radio" id="banngay" name="time" value="banngay">
+          <label for="banngay">Ban ngày</label><br>
+          <input type="radio" id="bandem" name="time" value="bandem">
+          <label for="bandem">Ban đêm</label><br>
+        </td>
+      </tr>
+      <tr height='30px'>
+        <th colspan='3'><button type="button" onclick='calculateTotal(event)'>Tính tiền</button></th>
+      </tr>
+    </table>
+  </form>
+
+  <table id="bill" class="bill">
+    <thead>
+      <tr class='title'>
+        <th>Các món đã dùng</th>
+        <th>Tiền</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+
+  <script>
+    // Hàm tính tổng tiền khi người dùng nhấn nút "Tính tiền"
+    function calculateTotal(event) {
+      event.preventDefault(); // Ngăn form submit và reload trang
+      let foodTotal = 0; // Tổng tiền món ăn
+      let drinkTotal = 0; // Tổng tiền nước uống
+      const selectedItems = []; // Mảng lưu các món đã chọn
+
+      // Định nghĩa giá của từng món ăn
+      const foodPriceList = {
+        bunbo: 20000,
+        hutieu: 18000, 
+        banhcanh: 17000,
+        phobo: 19000,
+        nuoi: 15000,
+        banhmithit: 12000,
+        banhcuon: 15000
+      };
+
+      // Định nghĩa giá của từng loại nước uống
+      const drinkPriceList = {
+        cfda: 12000,
+        cfsuada: 15000,
+        chanhday: 13000,
+        chanhmuoi: 12000,
+        ximuoi: 14000,
+        suatuoi: 13000,
+        camvat: 17000
+      };
+
+      // Lấy danh sách các món ăn được chọn và tính tổng tiền
+      const selectedFoods = document.getElementById('food').selectedOptions;
+      for (let i = 0; i < selectedFoods.length; i++) {
+        const foodName = selectedFoods[i].text; // Tên món ăn hiển thị
+        const foodPrice = foodPriceList[selectedFoods[i].value]; // Giá món ăn
+        selectedItems.push({ name: foodName, price: foodPrice }); // Thêm vào mảng đã chọn
+        foodTotal += foodPrice; // Cộng vào tổng tiền món ăn
+      }
+
+      // Lấy danh sách các nước uống được chọn và tính tổng tiền
+      const selectedDrinks = document.getElementById('drink').selectedOptions;
+      for (let i = 0; i < selectedDrinks.length; i++) {
+        const drinkName = selectedDrinks[i].text; // Tên nước uống hiển thị
+        const drinkPrice = drinkPriceList[selectedDrinks[i].value]; // Giá nước uống
+        selectedItems.push({ name: drinkName, price: drinkPrice }); // Thêm vào mảng đã chọn
+        drinkTotal += drinkPrice; // Cộng vào tổng tiền nước uống
+      }
+
+      let total = foodTotal + drinkTotal; // Tổng tiền = tổng món ăn + tổng nước uống
+
+      // Kiểm tra thời điểm order, nếu là ban đêm thì tăng giá thêm 10%
+      const timeOfOrder = document.querySelector('input[name="time"]:checked');
+      if (timeOfOrder && timeOfOrder.value === "bandem") {
+        total *= 1.1;
+      }
+
+      // Hiển thị hóa đơn chi tiết
+      populateBill(selectedItems, total);
+    }
+
+    // Hàm hiển thị hóa đơn chi tiết
+    function populateBill(selectedItems, total) {
+      const tableBody = document.getElementById('tableBody');
+      tableBody.innerHTML = ''; // Xóa nội dung cũ
+
+      // Thêm từng món đã chọn vào bảng hóa đơn
+      selectedItems.forEach(item => {
+        const row = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        const priceCell = document.createElement('td');
+        nameCell.textContent = item.name;
+        priceCell.textContent = item.price.toFixed(0); // Làm tròn số
+        row.appendChild(nameCell);
+        row.appendChild(priceCell);
+        tableBody.appendChild(row);
+      });
+
+      // Thêm dòng tổng tiền vào cuối bảng
+      const row = document.createElement('tr');
+      const nameCell = document.createElement('td');
+      const totalPriceCell = document.createElement('td');
+      nameCell.textContent = 'Tổng tiền';
+      totalPriceCell.textContent = total.toFixed(0) + ' đồng';
+      row.appendChild(nameCell);
+      row.appendChild(totalPriceCell);
+      tableBody.appendChild(row);
+
+      // Hiển thị bảng hóa đơn
+      document.getElementById('bill').style.display = 'table';
+    }
+  </script>
+</body>
+
+</html>

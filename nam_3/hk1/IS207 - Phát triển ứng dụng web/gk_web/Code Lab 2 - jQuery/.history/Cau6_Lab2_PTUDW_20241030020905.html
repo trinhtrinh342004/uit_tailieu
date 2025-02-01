@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form đăng ký tour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFDD99;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #FFF4CC;
+            border: 1px solid #000;
+            padding: 20px;
+            width: 500px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Gộp các đường viền thành một */
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid black; /* Hiển thị đường kẻ cho bảng */
+        }
+        input, select, textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            width: 50%;
+            padding: 10px 20px;
+            background-color: #FFA500;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            display: block;
+            margin: 20px auto;
+        }
+        textarea {
+            height: 100px;
+        }
+        label {
+            color: #2929e2;
+        }
+        fieldset {
+            color: #2929e2;
+        }
+        /* Căn giữa tiêu đề "Thông tin đăng ký" */
+        #registrationInfo h3, #priceInfo h3 {
+            text-align: center;
+        }
+        /* Không in đậm và kích thước chữ bằng ghi chú */
+        #priceInfo label {
+            font-weight: normal;
+            font-size: 14px;
+        }
+        /* Ẩn đường kẻ cho bảng của priceInfo và registrationInfo */
+        #priceInfo table, #registrationInfo table {
+            border: none;
+        }
+
+        #priceInfo th, #priceInfo td, #registrationInfo th, #registrationInfo td {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Phiếu đăng ký tour du lịch</h2>
+    <form id="tourForm">
+        <div id="registrationForm">
+            <table>
+                <tr>
+                    <th><label for="name">Họ và tên khách</label></th>
+                    <td><input type="text" id="name" name="name" placeholder="Nhập tên"></td>
+                </tr>
+                <tr>
+                    <th><label for="address">Địa chỉ</label></th>
+                    <td><input type="text" id="address" name="address" placeholder="Nhập địa chỉ"></td>
+                </tr>
+                <tr>
+                    <th><label for="phone">Điện thoại</label></th>
+                    <td><input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại"></td>
+                </tr>
+                <tr>
+                    <th><label for="tour">Tour</label></th>
+                    <td>
+                        <select id="tour" name="tour">
+                            <option value="Hà Nội – Hạ Long – Tuần Châu">Hà Nội – Hạ Long – Tuần Châu</option>
+                            <option value="Hà Nội – Sapa">Hà Nội – Sapa</option>
+                            <option value="Đà Nẵng – Hội An">Đà Nẵng – Hội An</option>
+                            <option value="Buôn Mê Thuột – Kon Tum">Buôn Mê Thuột – Kon Tum</option>
+                            <option value="TP.HCM – Nha Trang">TP.HCM – Nha Trang</option>
+                            <option value="TP.HCM – Cần Thơ – Cà Mau">TP.HCM – Cần Thơ – Cà Mau</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <fieldset>
+                            <legend>Số lượng đoàn khách</legend>
+                            Người lớn <input type="number" id="adults" value="1" min="1" style="width: 50px;">
+                            Trẻ em <input type="number" id="children" value="0" min="0" style="width: 50px;">
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="notes">Ghi chú</label></th>
+                    <td><textarea id="notes" name="notes" placeholder="Thêm ghi chú..."></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <button type="submit">Đăng ký</button>
+    </form>
+    <div id="registrationInfo" style="display:none;"></div>
+    <div id="priceInfo" style="display:none;"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Khai báo giá tour cho từng địa điểm
+    const tourPrices = {
+        "Hà Nội – Hạ Long – Tuần Châu": 10000000,  // 10 triệu đồng
+        "Hà Nội – Sapa": 6000000,                  // 6 triệu đồng
+        "Đà Nẵng – Hội An": 3000000,              // 3 triệu đồng 
+        "Buôn Mê Thuột – Kon Tum": 2000000,       // 2 triệu đồng
+        "TP.HCM – Nha Trang": 3500000,            // 3.5 triệu đồng
+        "TP.HCM – Cần Thơ – Cà Mau": 2500000      // 2.5 triệu đồng
+    };
+
+    // Xử lý sự kiện khi form được submit
+    $('#tourForm').on('submit', function(e) {
+        e.preventDefault(); // Ngăn form submit và tải lại trang
+        
+        // Lấy các giá trị từ form sử dụng jQuery
+        const name = $('#name').val();         // Tên khách hàng
+        const address = $('#address').val();    // Địa chỉ
+        const tour = $('#tour').val();         // Tour được chọn
+        const adults = parseInt($('#adults').val());     // Số người lớn
+        const children = parseInt($('#children').val()); // Số trẻ em
+        const notes = $('#notes').val() || 'Ghi chú';   // Ghi chú (nếu không có thì mặc định là "Ghi chú")
+
+        // Lấy thời gian hiện tại và định dạng theo kiểu Việt Nam
+        // VD: Thứ Hai, 25/10/2023 15h30
+        const registrationDate = new Date().toLocaleString('vi-VN', {
+            weekday: 'long',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        }).replace(':', 'h');
+
+        // Tính toán giá tiền
+        const adultPrice = tourPrices[tour];               // Giá người lớn
+        const childPrice = adultPrice / 2;                 // Giá trẻ em = 1/2 giá người lớn
+        const totalAdultPrice = adultPrice * adults;       // Tổng tiền người lớn
+        const totalChildPrice = childPrice * children;     // Tổng tiền trẻ em
+        const totalPrice = totalAdultPrice + totalChildPrice; // Tổng tiền phải trả
+
+        // Tạo bảng HTML hiển thị thông tin giá
+        const priceInfo = `
+            <h3>Số lượng khách đoàn</h3>
+            <table>
+                <tr><th>SL</th><th>Đơn giá</th><th>Thành Tiền</th></tr>
+                <tr><td>Người lớn: ${adults}</td><td>${adultPrice.toLocaleString()} đ</td><td>${totalAdultPrice.toLocaleString()} đ</td></tr>
+                <tr><td>Trẻ em: ${children}</td><td>${childPrice.toLocaleString()} đ</td><td>${totalChildPrice.toLocaleString()} đ</td></tr>
+                <tr><th colspan="2">Tổng tiền</th><td>${totalPrice.toLocaleString()} đ</td></tr>
+            </table>
+        `;
+
+        // Tạo trang HTML mới hiển thị thông tin đăng ký
+        const registrationInfo = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Thông tin đăng ký tour</title>
+                <style>
+                    body { font-family: Arial, sans-serif; padding: 20px; }
+                    table { width: 100%; border-collapse: collapse; }
+                    th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
+                    h3 { text-align: center; }
+                </style>
+            </head>
+            <body>
+                <h3>Thông tin đăng ký</h3>
+                <table>
+                    <tr><th>Ngày đăng ký:</th><td>${registrationDate}</td></tr>
+                    <tr><th>Nhân Viên</th><td>Họ tên nhân viên</td></tr>
+                    <tr><th>Họ tên khách</th><td>${name}</td></tr>
+                    <tr><th>Địa chỉ</th><td>${address}</td></tr>
+                    <tr><th>Tour</th><td>${tour}</td></tr>
+                    <tr><th>Ghi chú</th><td>${notes}</td></tr>
+                </table>
+                ${priceInfo}
+            </body>
+            </html>
+        `;
+
+        // Open new window with jQuery
+        const newWindow = window.open('', '_blank');
+        $(newWindow.document).write(registrationInfo);
+        $(newWindow.document).close();
+    });
+
+    // Tour change handler
+    $('#tour').on('change', function() {
+        const selectedTour = $(this).val();
+        const price = tourPrices[selectedTour];
+        const priceInfoElement = $('#priceInfo');
+        
+        priceInfoElement.html(`<p>Giá tiền / Người: ${price.toLocaleString()} đ</p>`);
+        priceInfoElement.show();
+    });
+});
+</script>
+</body>
+</html>

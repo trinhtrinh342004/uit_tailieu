@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt Vé Xem Phim</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    td,
+    th {
+      padding: 5px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+
+    select,
+    button {
+      width: 300px;
+      padding: 5px;
+    }
+
+    tfoot td {
+      text-align: center
+    }
+
+    #ticketInfo {
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="ticketForm">
+    <table>
+      <thead>
+        <td colspan='2'>
+          <h1>Mua vé</h1>
+        </td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ngày chiếu:</td>
+          <td><input type="date" name="date" required></td>
+        </tr>
+        <tr>
+          <td>Phim:</td>
+          <td>
+            <select class='movie' name="movie" required>
+              <option value="">Chọn phim</option>
+              <option value="Yêu em bất chấp">Yêu em bất chấp</option>
+              <option value="Tháng năm rực rỡ">Tháng năm rực rỡ</option>
+              <option value="Và em sẽ đến">Và em sẽ đến</option>
+              <option value="Chuyện ma lúc 3 giờ sáng">Chuyện ma lúc 3 giờ sáng</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Suất chiếu:</td>
+          <td>
+            <select name="showtime" required>
+              <option value="">Chọn suất chiếu</option>
+              <option value="9h - 12h">9h - 12h</option>
+              <option value="13h - 16h">13h - 16h</option>
+              <option value="17h - 20h">17h - 20h</option>
+              <option value="22h - 2h">22h - 2h</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Phòng chiếu:</td>
+          <td>
+            <select name="room" required>
+              <option value="">Chọn phòng chiếu</option>
+              <option value="Đồng">Đồng</option>
+              <option value="Bạc">Bạc</option>
+              <option value="Vàng">Vàng</option>
+              <option value="Kim cương">Kim Cương</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Chọn chỗ ngồi:</td>
+          <td>
+            <select name="seats" multiple required>
+              <option value="Ghế 01">Ghế 01</option>
+              <option value="Ghế 02">Ghế 02</option>
+              <option value="Ghế 03">Ghế 03</option>
+              <option value="Ghế 04">Ghế 04</option>
+              <option value="Ghế 05">Ghế 05</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td colspan='2'>
+          <button type="button" onclick="buyTicket()">Mua vé</button>
+        </td>
+      </tfoot>
+    </table>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    // Hàm xử lý khi người dùng nhấn nút "Mua vé"
+    function buyTicket() {
+      // Định nghĩa giá vé theo từng suất chiếu (đơn vị: VNĐ)
+      // - Suất sáng và chiều (9h-12h, 13h-16h): 45.000đ
+      // - Suất tối (17h-20h): 55.000đ  
+      // - Suất khuya (22h-2h): 35.000đ
+      const timePriceList = {
+        '9h - 12h': 45000,
+        '13h - 16h': 45000,
+        '17h - 20h': 55000,
+        '22h - 2h': 35000
+      };
+
+      // Định nghĩa hệ số nhân giá vé theo loại phòng
+      // - Phòng Đồng: x1.0 (giá gốc)
+      // - Phòng Bạc: x1.2 
+      // - Phòng Vàng: x1.5
+      // - Phòng Kim cương: x2.0
+      const roomPriceList = {
+        'Đồng': 1.0,
+        'Bạc': 1.2,
+        'Vàng': 1.5,
+        'Kim cương': 2.0
+      };
+
+      // Lấy form đặt vé sử dụng jQuery
+      const $form = $('#ticketForm');
+
+      // Hàm chuyển đổi định dạng ngày từ YYYY-MM-DD sang DD/MM/YYYY
+      // VD: 2023-10-25 -> 25/10/2023
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0'); // Thêm số 0 phía trước nếu ngày < 10
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Thêm số 0 phía trước nếu tháng < 10
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
+
+      // Tính giá vé cho mỗi ghế bằng cách:
+      // 1. Lấy giá theo suất chiếu
+      // 2. Nhân với hệ số giá phòng
+      const timePrice = timePriceList[$form.find('[name="showtime"]').val()];
+      const roomPrice = roomPriceList[$form.find('[name="room"]').val()];
+      const priceEachPerson = timePrice * roomPrice;
+
+      // Lấy danh sách các ghế được chọn
+      const seats = $form.find('[name="seats"] option:selected').map(function() {
+        return $(this).val();
+      }).get();
+      
+      // Tính tổng tiền = giá mỗi ghế * số ghế đã chọn
+      const totalPrice = priceEachPerson * seats.length;
+
+      // Tạo nội dung HTML cho vé bao gồm:
+      // - CSS để định dạng vé
+      // - Thông tin khách hàng, ngày chiếu, phim, suất chiếu, phòng
+      // - Bảng liệt kê các ghế đã chọn và giá từng ghế
+      // - Tổng tiền phải thanh toán
+      const ticketContent = `
+      <html>
+      <head>
+          <title>Thông Tin Vé</title>
+          <style>
+              body {
+                  font-family: Arial, sans-serif;
+                  max-width: 600px;
+                  margin: 0 auto;
+                  padding: 20px;
+              }
+              table {
+                  width: 100%;
+              }
+              td, th {
+                  padding: 5px;
+              }
+          </style>
+      </head>
+      <body>
+        <div id="ticketInfo" style="border: 1px solid black;">
+          <table>
+              <tr>
+                  <th><strong>Thông tin vé</strong></th>
+              </tr>
+              <tr>
+                  <td>Khách hàng</td>
+                  <td>Nguyễn Văn A</td>
+              </tr>
+              <tr>
+                  <td>Ngày chiếu</td>
+                  <td>${formatDate($form.find('[name="date"]').val())}</td>
+              </tr>
+              <tr>
+                  <td>Phim</td>
+                  <td>${$form.find('[name="movie"]').val()}</td>
+              </tr>
+              <tr>
+                  <td>Suất chiếu</td>
+                  <td>${$form.find('[name="showtime"]').val()}</td>
+              </tr>
+              <tr>
+                  <td>Phòng chiếu</td>
+                  <td>${$form.find('[name="room"]').val()}</td>
+              </tr>
+              <tr>
+                  <th style="text-align: center">Ghế</th>
+                  <th style="text-align: center">Giá Vé</th>
+              </tr>
+              ${seats.map(seat => `
+                  <tr>
+                      <td style="text-align: center">${seat}</td>
+                      <td style="text-align: center">${priceEachPerson.toLocaleString()}đ</td>
+                  </tr>
+              `).join('')}
+              <tr>
+                  <td style="text-align: center"><strong>Tổng tiền:</strong></td> 
+                  <td style="text-align: center"><strong>${totalPrice.toLocaleString()}đ</strong></td>
+              </tr>
+          </table>
+        </div>
+      </body>
+      </html>`;
+
+      // Mở cửa sổ mới và hiển thị thông tin vé using jQuery
+      const newWindow = window.open('', '_blank', 'width=600,height=600');
+      $(newWindow.document).ready(function() {
+        $(newWindow.document).find('html').html(ticketContent);
+      });
+    }
+
+    // Add jQuery click handler instead of onclick attribute
+    $(document).ready(function() {
+      $('button').on('click', buyTicket);
+    });
+  </script>
+</body>
+</html>

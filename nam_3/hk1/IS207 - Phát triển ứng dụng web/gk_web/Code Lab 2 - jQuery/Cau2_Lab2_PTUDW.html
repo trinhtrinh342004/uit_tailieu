@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bai2</title>
+  <style>
+    .menu {
+      background-color: #D1FF00;
+      border-collapse: collapse;
+      border: 2px solid #6a8106;
+    }
+
+    td,
+    th {
+      border: 2px solid #6a8106;
+    }
+
+    table .title {
+      font-weight: 600;
+      color: blue;
+    }
+
+    .bill {
+      margin-top: 20px;
+      border-collapse: collapse;
+      background-color: #9BF1F2;
+      border: 4px solid #88a40c;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form method='post'>
+    <table class='menu'>
+      <tr height='30px'>
+        <th colspan='3'>
+          <h2>THỰC ĐƠN</h2>
+        </th>
+      </tr>
+      <tr class='title'>
+        <td>Thức ăn</td>
+        <td>Nước uống</td>
+        <td>Thời điểm</td>
+      </tr>
+      <tr>
+        <td>
+          <select size='7' name="food" id="food" multiple>
+            <option value="bunbo">Bún bò</option>
+            <option value="hutieu">Hủ tiếu</option>
+            <option value="banhcanh">Bánh canh</option>
+            <option value="phobo">Phở bò</option>
+            <option value="nuoi">Nuôi</option>
+            <option value="banhmithit">Bánh mì thịt</option>
+            <option value="banhcuon">Bánh cuốn</option>
+          </select>
+        </td>
+        <td>
+          <select size='7' name="drink" id="drink" multiple>
+            <option value="cfda">Cà phê đá</option>
+            <option value="cfsuada">Cà phê sữa đá</option>
+            <option value="chanhday">Chanh dây</option>
+            <option value="chanhmuoi">Chanh muối</option>
+            <option value="ximuoi">Xí muội</option>
+            <option value="suatuoi">Sữa tươi</option>
+            <option value="camvat">Cam vắt</option>
+          </select>
+        </td>
+        <td width='150px'>
+          <input type="radio" id="banngay" name="time" value="banngay">
+          <label for="banngay">Ban ngày</label><br>
+          <input type="radio" id="bandem" name="time" value="bandem">
+          <label for="bandem">Ban đêm</label><br>
+        </td>
+      </tr>
+      <tr height='30px'>
+        <th colspan='3'><button type="button" onclick='calculateTotal(event)'>Tính tiền</button></th>
+      </tr>
+    </table>
+  </form>
+
+  <table id="bill" class="bill">
+    <thead>
+      <tr class='title'>
+        <th>Các món đã dùng</th>
+        <th>Tiền</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    // Hàm tính tổng tiền khi nhấn nút "Tính tiền"
+    function calculateTotal(event) {
+      event.preventDefault(); // Ngăn form submit và tải lại trang
+      let foodTotal = 0; // Khởi tạo tổng tiền thức ăn
+      let drinkTotal = 0; // Khởi tạo tổng tiền đồ uống
+      const selectedItems = []; // Mảng lưu các món đã chọn và giá tiền
+
+      // Danh sách giá thức ăn (đơn vị VND)
+      const foodPriceList = {
+        bunbo: 20000,      // Bún bò - 20.000đ
+        hutieu: 18000,     // Hủ tiếu - 18.000đ  
+        banhcanh: 17000,   // Bánh canh - 17.000đ
+        phobo: 19000,      // Phở bò - 19.000đ
+        nuoi: 15000,       // Nuôi - 15.000đ
+        banhmithit: 12000, // Bánh mì thịt - 12.000đ
+        banhcuon: 15000    // Bánh cuốn - 15.000đ
+      };
+
+      // Danh sách giá đồ uống (đơn vị VND) 
+      const drinkPriceList = {
+        cfda: 12000,      // Cà phê đá - 12.000đ
+        cfsuada: 15000,   // Cà phê sữa đá - 15.000đ
+        chanhday: 13000,  // Chanh dây - 13.000đ
+        chanhmuoi: 12000, // Chanh muối - 12.000đ
+        ximuoi: 14000,    // Xí muội - 14.000đ
+        suatuoi: 13000,   // Sữa tươi - 13.000đ
+        camvat: 17000     // Cam vắt - 17.000đ
+      };
+
+      // Duyệt qua các món ăn đã chọn bằng jQuery
+      $('#food option:selected').each(function() {
+        const foodName = $(this).text(); // Lấy tên món ăn
+        const foodPrice = foodPriceList[$(this).val()]; // Lấy giá món ăn từ danh sách
+        selectedItems.push({ name: foodName, price: foodPrice }); // Thêm vào mảng đã chọn
+        foodTotal += foodPrice; // Cộng vào tổng tiền thức ăn
+      });
+
+      // Duyệt qua các đồ uống đã chọn bằng jQuery
+      $('#drink option:selected').each(function() {
+        const drinkName = $(this).text(); // Lấy tên đồ uống
+        const drinkPrice = drinkPriceList[$(this).val()]; // Lấy giá đồ uống từ danh sách
+        selectedItems.push({ name: drinkName, price: drinkPrice }); // Thêm vào mảng đã chọn
+        drinkTotal += drinkPrice; // Cộng vào tổng tiền đồ uống
+      });
+
+      let total = foodTotal + drinkTotal; // Tính tổng tiền tạm thời
+
+      // Tăng giá 10% nếu chọn "Ban đêm"
+      if ($('input[name="time"]:checked').val() === "bandem") {
+        total *= 1.1; // Tăng thêm 10%
+      }
+
+      populateBill(selectedItems, total); // Hiển thị hóa đơn
+    }
+
+    // Hàm hiển thị hóa đơn với các món đã chọn và tổng tiền
+    function populateBill(selectedItems, total) {
+      const $tableBody = $('#tableBody');
+      $tableBody.empty(); // Xóa nội dung hóa đơn cũ
+
+      // Thêm từng món đã chọn vào bảng hóa đơn
+      $.each(selectedItems, function(index, item) {
+        $('<tr>')
+          .append($('<td>').text(item.name)) // Cột tên món
+          .append($('<td>').text(item.price.toFixed(0))) // Cột giá tiền (làm tròn số)
+          .appendTo($tableBody);
+      });
+
+      // Thêm dòng tổng tiền vào cuối
+      $('<tr>')
+        .append($('<td>').text('Tổng tiền')) // Nhãn "Tổng tiền"
+        .append($('<td>').text(total.toFixed(0) + ' đồng')) // Số tiền tổng cộng + đơn vị tiền
+        .appendTo($tableBody);
+
+      // Hiển thị bảng hóa đơn
+      $('#bill').show();
+    }
+  </script>
+</body>
+
+</html>

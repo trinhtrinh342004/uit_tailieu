@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin phiếu mượn sách</title>
+    <style>
+        .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .button-group {
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #addBtn {
+        background-color: #333;
+        color: white;
+    }
+
+    #resetBtn {
+        background-color: #666;
+        color: white;
+    }
+
+    #borrowList {
+        margin-top: 30px;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .borrow-item {
+        padding: 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+        flex: 0 1 300px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-radius: 4px;
+    }
+
+    .borrow-item a {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    #addBookBtn {
+        margin-top: 10px;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .book-select {
+        margin-bottom: 10px;
+    }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Thông tin phiếu mượn sách</h1>
+        
+        <form id="borrowForm">
+            <div class="form-group">
+                <label for="readerName">Họ tên độc giả</label>
+                <input type="text" id="readerName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="borrowDate">Ngày mượn sách</label>
+                <input type="date" id="borrowDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bookSelect">Tựa sách</label>
+                <div id="bookSelections">
+                    <select id="bookSelect" class="book-select">
+                        <option value="nexus" data-duration="7">Nexus (7 ngày)</option>
+                        <option value="dune" data-duration="7">Dune - Xứ cát (7 ngày)</option>
+                        <option value="kafka" data-duration="14">Kafka bên bờ biển (14 ngày)</option>
+                    </select>
+                </div>
+                <button type="button" id="addBookBtn">Thêm sách mượn</button>
+            </div>
+
+            <div class="form-group">
+                <label for="note">Ghi chú</label>
+                <textarea id="note"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" id="addBtn">Thêm</button>
+                <button type="reset" id="resetBtn">Reset</button>
+            </div>
+        </form>
+
+        <div id="borrowList">
+            <!-- Danh sách phiếu mượn sẽ được thêm vào đây bằng jQuery -->
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            let borrowCount = 0;
+            let bookSelectCount = 1;
+            
+            // Thêm xử lý cho nút thêm sách
+            $('#addBookBtn').click(function() {
+                if (bookSelectCount >= 3) {
+                    alert('Mỗi phiếu mượn chỉ được mượn tối đa 03 quyển sách.');
+                    return;
+                }
+                
+                const $newSelect = $('#bookSelect').clone();
+                $newSelect.val($('#bookSelect option:first').val());
+                $('#bookSelections').append($newSelect);
+                bookSelectCount++;
+            });
+            
+            $('#borrowForm').submit(function(e) {
+                e.preventDefault();
+                
+                // Tạo danh sách các sách được chọn, chỉ lấy tên sách (bỏ phần thời hạn trong ngoặc)
+                const selectedBooks = $('.book-select').map(function() {
+                    const fullText = $(this).find('option:selected').text();
+                    return fullText.split('(')[0].trim(); // Lấy phần text trước dấu (
+                }).get();
+                
+                // Tạo phiếu mượn mới
+                const borrowItem = $('<div>').addClass('borrow-item').append(
+                    $('<a>')
+                        .addClass('reader-name')
+                        .attr('href', '#')
+                        .text($('#readerName').val()),
+                    $('<p>').text('Ngày mượn: ' + $('#borrowDate').val()),
+                    $('<p>').html('Sách mượn: <br>' + selectedBooks.map(book => 'Sách: ' + book).join('<br>'))
+                );
+                
+                $('#borrowList').append(borrowItem);
+                
+                // Reset form và số lượng select sách về ban đầu
+                $form[0].reset();
+                $('#bookSelections').html($('#bookSelections select').first());
+                bookSelectCount = 1;
+            });
+            
+            // Xử lý click vào tên độc giả
+            $(document).on('click', '.reader-name', function(e) {
+                e.preventDefault();
+                const $item = $(this).closest('.borrow-item');
+                
+                const detailContent = $('<div>').append(
+                    $('<html>').attr('lang', 'vi').append(
+                        $('<head>').append(
+                            $('<meta>').attr('charset', 'UTF-8'),
+                            $('<title>').text('Thông tin phiếu mượn'),
+                            $('<style>').text(`
+                                body { padding: 20px; }
+                                table { border-collapse: collapse; width: 100%; max-width: 600px; }
+                                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                                th { background-color: #f2f2f2; }
+                                div { border: 1px solid #ddd; padding: 10px; max-width: 400px; margin: 0 auto; }
+                                h2 { text-align: center; }
+                            `)
+                        ),
+                        $('<body>').append(
+                            $('<div>').append(
+                                $('<h2>').text('Thông tin phiếu mượn'),
+                                $('<table>').append(
+                                    $('<tr>').append(
+                                        $('<th>').text('Tên độc giả'),
+                                        $('<td>').text($(this).text())
+                                    ),
+                                    $('<tr>').append(
+                                        $('<th>').text('Số điện thoại'),
+                                        $('<td>').text($('#phone').val())
+                                    ),
+                                    $('<tr>').append(
+                                        $('<th>').text('Sách mượn'),
+                                        $('<th>').text('Hạn mượn'),
+                                    ),
+                                    $item.find('p:contains("Sách mượn:")').html()
+                                        .replace('Sách mượn: <br>', '')
+                                        .split('<br>')
+                                        .map(book => {
+                                            const bookName = book.replace('Sách: ', '');
+                                            const duration = $('#bookSelections select').find(`option:contains("${bookName}")`).data('duration');
+                                            return $('<tr>').append(
+                                                $('<td>').text(bookName),
+                                                $('<td>').text((duration ? duration + ' ngày' : '14 ngày'))
+                                            );
+                                        }),
+                                    $('<tr>').append(
+                                        $('<th>').text('Ghi chú'),
+                                        $('<td>').text($('#note').val())
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ).html();
+
+                const newTab = window.open('', '_blank');
+                newTab.document.write(detailContent);
+                newTab.document.close();
+            });
+        });
+    </script>
+</body>
+</html>

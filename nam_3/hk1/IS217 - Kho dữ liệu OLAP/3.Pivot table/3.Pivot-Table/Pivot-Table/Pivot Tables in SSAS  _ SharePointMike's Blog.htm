@@ -1,0 +1,1265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Pivot Tables in SSAS? | SharePointMike's Blog</title>
+	<link rel="pingback" href="http://sharepointmike.wordpress.com/xmlrpc.php">
+	<link rel="alternate" type="application/rss+xml" title="SharePointMike's Blog » Feed" href="http://sharepointmike.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="SharePointMike's Blog » Comments Feed" href="http://sharepointmike.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="SharePointMike's Blog » Pivot Tables in&nbsp;SSAS? Comments Feed" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/feed/">
+<script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/wl" async="" type="text/javascript"></script><script type="text/javascript">
+/* <![CDATA[ */
+function addLoadEvent(func){var oldonload=window.onload;if(typeof window.onload!='function'){window.onload=func;}else{window.onload=function(){oldonload();func();}}}
+/* ]]> */
+</script>
+<link rel="stylesheet" id="all-css-0" href="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/a.css" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-0" href="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/global-print.css" type="text/css" media="print">
+<script type="text/javascript">
+/* <![CDATA[ */
+var LoggedOutFollow = {"invalid_email":"Your subscription did not succeed, please try again with a valid email address."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/a_002.js"></script>
+<link rel="stylesheet" id="all-css-0" href="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='http://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://sharepointmike.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://sharepointmike.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Are iPads Toys or the Tool of the&nbsp;Future" href="http://sharepointmike.wordpress.com/2012/05/08/are-ipads-toys-or-the-tool-of-the-future/">
+<link rel="next" title="Evaluating Competency" href="http://sharepointmike.wordpress.com/2012/05/15/evaluating-competency/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/">
+<link rel="shortlink" href="http://wp.me/pvcZM-ed">
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=http%3A%2F%2Fsharepointmike.wordpress.com%2F2012%2F05%2F12%2Fpivot-tables-in-ssas%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=http%3A%2F%2Fsharepointmike.wordpress.com%2F2012%2F05%2F12%2Fpivot-tables-in-ssas%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pivot Tables in SSAS?">
+<meta property="og:url" content="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/">
+<meta property="og:description" content="And you thought I was not going to talk about pivot tables for awhile... This week I’m going to take a look at SQL Server 2012, specifically SQL Server Analysis Services (SSAS).&nbsp; Since SSAS was int...">
+<meta property="article:published_time" content="2012-05-12T05:05:44+00:00">
+<meta property="article:modified_time" content="2012-05-10T23:49:38+00:00">
+<meta property="article:author" content="http://sharepointmike.wordpress.com/author/sharepointmike/">
+<meta property="og:site_name" content="SharePointMike's Blog">
+<meta property="og:image" content="http://sharepointmike.files.wordpress.com/2012/05/contoso_pivot_16.gif">
+<meta property="og:image" content="http://sharepointmike.files.wordpress.com/2012/05/contoso_pivot_15.gif">
+<meta property="og:image" content="http://sharepointmike.files.wordpress.com/2012/05/contoso_pivot_14.gif">
+<meta property="og:image" content="http://sharepointmike.files.wordpress.com/2012/05/contoso_pivot_13.gif">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="http://sharepointmike.files.wordpress.com/2012/05/contoso_pivot_01.gif?w=240">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311975824g" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311975824g" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1391188133g">
+<link rel="openid.server" href="http://sharepointmike.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://sharepointmike.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://sharepointmike.wordpress.com/osd.xml" title="SharePointMike's Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+<style type="text/css">
+.widget_twitter li {
+	word-wrap: break-word;
+}
+</style>
+<meta name="application-name" content="SharePointMike's Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="SharePoint People use SQL too, especially Data Analysis"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://sharepointmike.wordpress.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="title" content="Pivot Tables in&nbsp;SSAS? | SharePointMike's Blog on WordPress.com">
+<meta name="description" content="And you thought I was not going to talk about pivot tables for awhile... This week I’m going to take a look at SQL Server 2012, specifically SQL Server Analysis Services (SSAS).&nbsp; Since SSAS was introduced in SQL Server 2005, it supported only a single mode of operation.&nbsp; That mode was to use a multi-dimensional…">
+		<style type="text/css">
+			#header h1,
+			#header h1 a,
+			#header h1 a:visited,
+			#header h4,
+			#header h4 a,
+			#header h4 a:visited,
+			.header-left {
+				color: #3ea59e;
+			}
+		</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #3ea59e; }
+</style>
+
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/google_service.js">
+</script>
+<script type="text/javascript">
+if ( typeof GS_googleAddAdSenseService == 'function' ) { GS_googleAddAdSenseService("ca-pub-3443918307802676"); }
+if ( typeof GS_googleEnableAllServices == 'function' ) { GS_googleEnableAllServices() };
+</script><script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/google_ads.js"></script>
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/amzn_ads.js"></script>
+<script type="text/javascript">
+try { amznads.getAds("3033","300x250"); } catch(e) { /* ignore */ }
+</script><script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/bid"></script>
+<script type="text/javascript">
+var amznKeys = amznads.getKeys();
+if (typeof amznKeys != "undefined" && amznKeys != "") { for (var i =0; i < amznKeys.length; i++) { var key = amznKeys[i]; GA_googleAddAttr("amzn", key);} }
+document.close();
+</script>
+<script type="text/javascript">
+if ( typeof GA_googleAddSlot == 'function' ) { GA_googleAddSlot("ca-pub-3443918307802676", "wpcom_below_post_adsafe"); }
+</script>
+<script type="text/javascript">
+if ( typeof GA_googleFetchAds == 'function' ) { GA_googleFetchAds(); }
+</script>
+
+<script type="text/javascript">
+var wpcom_ads = { bid: 7438126, pt: 'permalink', wa: 0, as: 1, domain: 'sharepointmike.wordpress.com', url: 'http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/', gid: '', };
+</script>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'wordpress.com']);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/ga.js" async="" type="text/javascript"></script>
+<script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/rate.php" charset="utf-8"></script><script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/osd.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/services.css"><style id="pd_popup_holder_style_3124298_post_881" type="text/css">#pd_popup_holder_3124298_post_881 { position:absolute; display:none; width:350px; height:auto; top:0px; left:0px; z-index:10000; border:solid 1px #CCC; background-color:white; padding:0px 15px;font-family:Arial,Sans;box-shadow: -10px 10px 20px rgba(0, 0, 0, .5);-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, .25);-moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, .25); }</style><script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/a_003.htm" async="" type="text/javascript"></script></head>
+
+<body data-twttr-rendered="true" class="single single-post postid-881 single-format-standard custom-background mp6 no-svg highlander-enabled highlander-light">
+
+<div id="header">
+	<div class="header-left">
+					<h4><a sl-processed="1" href="http://sharepointmike.wordpress.com/">SharePointMike's Blog</a></h4>
+				<p id="description">SharePoint People use SQL too, especially Data Analysis</p>
+	</div>
+	<div class="header-right">
+		<form method="get" id="searchform" action="http://sharepointmike.wordpress.com/">
+			<div><label class="hidden" for="s">Search:</label>
+			<input name="s" id="s" type="text">
+			<input id="searchsubmit" value="Go" type="submit"></div>
+		</form>
+	</div>
+</div>
+<div id="access">
+	<div id="nav">
+		<div id="supernav" class="navleft nav">
+			<div class="menu"><ul><li><a sl-processed="1" href="http://sharepointmike.wordpress.com/">Home</a></li><li class="page_item page-item-2"><a sl-processed="1" href="http://sharepointmike.wordpress.com/about/">About</a></li><li class="page_item page-item-61"><a sl-processed="1" href="http://sharepointmike.wordpress.com/sharepoint-shot-newsletters/">SharePoint Shot Newsletters</a></li></ul></div>
+		</div>
+		<div class="navright">
+			<a sl-processed="1" class="rsslink" rel="nofollow" href="http://sharepointmike.wordpress.com/feed/">Posts</a>
+			<a sl-processed="1" class="rsslink" rel="nofollow" href="http://sharepointmike.wordpress.com/comments/feed/">Comments</a>
+		</div>
+	</div>
+
+	<div id="subnav" class="subnav nav">
+			<div class="menu">
+		<ul>
+				<li class="cat-item cat-item-10392"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/" title="View all posts filed under Computers and Internet">Computers and Internet</a>
+<ul class="children">
+	<li class="cat-item cat-item-50933"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/business-intelligence/" title="View all posts filed under Business Intelligence">Business Intelligence</a>
+</li>
+	<li class="cat-item cat-item-6407"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/sql-server/" title="View all posts filed under SQL Server">SQL Server</a>
+</li>
+	<li class="cat-item cat-item-16434198"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/sharepoint-2010/" title="View all posts filed under SharePoint 2010">SharePoint 2010</a>
+</li>
+	<li class="cat-item cat-item-25398"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/excel/" title="View all posts filed under Excel">Excel</a>
+</li>
+	<li class="cat-item cat-item-26818141"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/powerpivot/" title="View all posts filed under PowerPivot">PowerPivot</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-105"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/news-and-politics/" title="View all posts filed under News and politics">News and politics</a>
+</li>
+	<li class="cat-item cat-item-4236"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/management/" title="View all posts filed under Management">Management</a>
+</li>
+	<li class="cat-item cat-item-14382"><a sl-processed="1" href="http://sharepointmike.wordpress.com/category/organizations/" title="View all posts filed under Organizations">Organizations</a>
+</li>
+		</ul>
+	</div>
+	</div>
+</div>
+
+<div id="wrap">
+<div id="content">
+
+	<div id="content-left">
+
+		
+			<div id="nav-above">
+				<div class="nav-previous"><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/08/are-ipads-toys-or-the-tool-of-the-future/" rel="prev"><span class="meta-nav">←</span> Are iPads Toys or the Tool of the&nbsp;Future</a></div>
+				<div class="nav-next"><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/15/evaluating-competency/" rel="next">Evaluating Competency <span class="meta-nav">→</span></a></div>
+			</div>
+
+			<div class="post-881 post type-post status-publish format-standard hentry category-computers-and-internet category-excel category-powerpivot category-sql-server">
+
+				<div class="entry">
+
+					<h1>Pivot Tables in&nbsp;SSAS?</h1>
+
+					<div class="post-info">
+						<p>
+							<span class="time">May 12, 2012</span>
+																						<span class="post-comments"><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/#comments" title="Comment on Pivot Tables in&nbsp;SSAS?">1 Comment</a></span>
+																				</p>
+					</div>
+
+					<div style="display: inline-block;" class="pd-rating" id="pd_rating_holder_3124298_post_881"><div class="rating-icons" id="pd_rate_3124298_post_881" style="float:left;"><div class="rating-star-icon" onmouseout="PDRTJS_3124298_post_881.rebuild();" onclick="PDRTJS_3124298_post_881.rate(1);" onmouseover="PDRTJS_3124298_post_881.hover(1);" id="PDRTJS_3124298_post_881_stars_1" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(http://i0.poll.fm/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3124298_post_881.rebuild();" onclick="PDRTJS_3124298_post_881.rate(2);" onmouseover="PDRTJS_3124298_post_881.hover(2);" id="PDRTJS_3124298_post_881_stars_2" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(http://i0.poll.fm/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3124298_post_881.rebuild();" onclick="PDRTJS_3124298_post_881.rate(3);" onmouseover="PDRTJS_3124298_post_881.hover(3);" id="PDRTJS_3124298_post_881_stars_3" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(http://i0.poll.fm/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3124298_post_881.rebuild();" onclick="PDRTJS_3124298_post_881.rate(4);" onmouseover="PDRTJS_3124298_post_881.hover(4);" id="PDRTJS_3124298_post_881_stars_4" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(http://i0.poll.fm/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3124298_post_881.rebuild();" onclick="PDRTJS_3124298_post_881.rate(5);" onmouseover="PDRTJS_3124298_post_881.hover(5);" id="PDRTJS_3124298_post_881_stars_5" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(http://i0.poll.fm/images/ratings/star-yellow-sml.png) bottom left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div></div><span style="float:left;">&nbsp;</span><div id="rating_info_3124298_post_881" style="display:block;float:left;background:url(http://i0.poll.fm/images/ratings/info.png) no-repeat 3px 2px;width:16px;height:16px;cursor:pointer; null " onclick="javascript:PDRTJS_3124298_post_881.togglePopup();return false;"><span style="display:none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_3124298_post_881">&nbsp;</div><div class="rating-msg" id="PDRTJS_3124298_post_881_msg" style="float:left; padding-left: 5px; text-align: left; font:normal normal /16px ; color: #;">Rate This</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div><br><p>And you thought I was not going to talk about pivot tables for awhile…</p>
+<p>This week I’m going to take a look at SQL Server 2012, specifically 
+SQL Server Analysis Services (SSAS).&nbsp; Since SSAS was introduced in 
+SQL Server 2005, it supported only a single mode of operation.&nbsp; 
+That mode was to use a multi-dimensional model for building cubes that 
+frankly many DBAs had trouble with because it encouraged denormalization
+ of the data to flatten the structure, reduce the number of tables and 
+create a star or snowflake schema for building cubes.</p>
+<p>Then Excel 2010 introduced PowerPivot which used a new engine called 
+the VertiPaq engine which allowed users to build pivot tables and charts
+ from relational tables without necessarily having to go through all of 
+the denormalization that SSAS expected.&nbsp; PowerPivot was introduced 
+in two flavors, PowerPivot for Excel and PowerPivot for 
+SharePoint.&nbsp; Both are distributed by Microsoft free of 
+charge.&nbsp; Both relied on the new VertiPaq engine but the SharePoint 
+version also required SQL Server 2008 R2 because the SSAS engine was 
+modified to support this new VertiPaq mode specifically for Excel 
+spreadsheets published to SharPoint.</p>
+<p>With SQL Server 2012, you can install SSAS using a third mode, the 
+tabular mode which allows you to directly build in SSAS pivot tables 
+using the same VertiPaq engine used by PowerPivot for Excel.&nbsp; So 
+why should you care?&nbsp; In Chapter 9 of Microsoft’s free ebook: 
+Introducing Microsoft SQL Server 2012, the authors provide a table to 
+compare the features between the three server modes for SSAS.&nbsp; 
+Rather than repeat that here, download the book at:&nbsp; <a sl-processed="1" href="http://blogs.msdn.com/b/microsoft_press/archive/2012/03/15/free-ebook-introducing-microsoft-sql-server-2012.aspx">http://blogs.msdn.com/b/microsoft_press/archive/2012/03/15/free-ebook-introducing-microsoft-sql-server-2012.aspx</a>.&nbsp; There is a lot of other good information about the new SQL Version here.</p>
+<p>So onward to the practical demo for today.&nbsp; I am going to show 
+screens here using SQL Server 2008 R2 since many of you may not have 
+converted to SQL 2012 yet.&nbsp; Since the multi-dimensional part of 
+SSAS has not changed in SQL Server 2012, the steps described here should
+ work the same way.&nbsp; I’m also going to use a Contoso data set which
+ you can download from: <a sl-processed="1" href="http://www.microsoft.com/en-us/download/details.aspx?id=18279">http://www.microsoft.com/en-us/download/details.aspx?id=18279</a></p>
+<p>To begin a SSAS project, open SQL Server Business Intelligence 
+Development Studio from the folder Microsoft SQL Server 2008 R2 in your 
+Start menu.&nbsp; Create a new project.&nbsp; In the <strong>New Project</strong> dialog, select <strong>Business Intelligence Projects</strong> as the <strong>Project Type</strong> and <strong>Analysis Services Project</strong> as the <strong>Template</strong>.&nbsp; In the figure below, you can see that I named the project <em>ContosoPivot</em>, but you can name your project whatever you like.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=883" rel="attachment wp-att-883"><img class="aligncenter size-full wp-image-883" title="Contoso_Pivot_01" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_01.gif" alt="" height="492" width="630"></a></p>
+<p>After you click <strong>OK</strong>, you will see the standard development environment that uses the Visual Studio shell.&nbsp; Go to your <strong>Solution Explorer</strong> panel.&nbsp; If you do not see a panel labeled <strong>Solution Explorer</strong>, open the <strong>View</strong> dropdown menu and click on <strong>Solution Explorer</strong> there.</p>
+<p>First, you need to define your data source.&nbsp; Right click <strong>Data Sources</strong> in your project in Solution Explorer and select <strong>New Data Source</strong> from the dropdown menu.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=884" rel="attachment wp-att-884"><img class="aligncenter size-full wp-image-884" title="Contoso_Pivot_02" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_02.gif" alt=""></a></p>
+<p>If you already have a connection defined, you can simply select it and click <strong>Finish</strong>.&nbsp; However, if you do not have an existing data connection to the database you want to use, click the <strong>New</strong> button.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=885" rel="attachment wp-att-885"><img class="aligncenter size-full wp-image-885" title="Contoso_Pivot_03" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_03.gif" alt="" height="610" width="630"></a></p>
+<p>In the connection manager, make sure your Provider says: <strong>Native OLD DB\SQL Server Native Client 10.0</strong>,
+ at least if you are using SQL Server 2008 R2.&nbsp; Otherwise, use the 
+dropdown arrow to display the available providers and hopefully you will
+ find the correct one for your version of SQL.&nbsp; Next, enter your 
+server name.&nbsp; If you are running this on your local machine, that 
+is probably your machine name.&nbsp; You can also use: <em>Localhost</em>,
+ or you can use the dropdown arrow to scan for available database 
+servers, but the fastest way is to manually enter your server name if 
+you know it.&nbsp; Next you can specify the type of authentication and 
+if you are using <strong>SQL Server Authentication</strong>, the user name and password.&nbsp; I prefer to use <strong>Windows Authentication</strong>
+ for two reasons.&nbsp; First, it is one less password to remember, and 
+second, SQL authentication passes the username and password over the 
+network in clear text.&nbsp; Finally, use the dropdown for the prompt: <em>Select or enter a database name</em> to select the database you want to use in the selected server.&nbsp; These options appear in the figure below.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=886" rel="attachment wp-att-886"><img class="aligncenter size-full wp-image-886" title="Contoso_Pivot_04" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_04.gif" alt="" height="746" width="630"></a></p>
+<p>(Note: There is a button to test the connection.&nbsp; You may want 
+to do this to insure that the authentication provided earlier has 
+permission to access the database.)</p>
+<p>When you click the <strong>Ok</strong> button, you will again see the <strong>Data Source Wizard</strong>, but now your new connection should appear in the <strong>Data Connections</strong> box on the left.&nbsp; Select the data connection and click <strong>Next</strong>.&nbsp;
+ Here you can provide impersonation information that defines how SSAS 
+connects to the data source.&nbsp; You could use a custom account that 
+limits rights to the database by using a custom Windows user name and 
+password.&nbsp; Keep in mind that you must give this user rights to the 
+database through SSMS.&nbsp; You can also use a service account or you 
+can use the credentials of the current user.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=887" rel="attachment wp-att-887"><img class="aligncenter size-full wp-image-887" title="Contoso_Pivot_05" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_05.gif" alt="" height="610" width="630"></a></p>
+<p>Click <strong>Next</strong> to finish defining the <strong>Data Source</strong>
+ by giving it a name.&nbsp; By default, the wizard uses the name of the 
+database as the source name.&nbsp; Usually this is acceptable.&nbsp; 
+Click the <strong>Finish</strong> button to complete the wizard.&nbsp; 
+You should now see your data source in the project with the extension 
+.ds.&nbsp; Now you need to create a <strong>Data Source View</strong> to define which tables you want to use.&nbsp; Right click on the <strong>Data Source Views</strong> folder in the <strong>Solution Explorer</strong>.</p>
+<p><img class="aligncenter size-full wp-image-888" title="Contoso_Pivot_06" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_06.gif" alt=""></p>
+<p>In the first screen after the <strong>Welcome</strong> screen, you can select one of the <strong>Relational Data Sources</strong> you created in the previous step.&nbsp; You can also create a new data source here by clicking the <strong>New Data</strong> <strong>Source</strong> button.&nbsp; Let us assume that the <strong>Data Source</strong> exists and you can just select it and click <strong>Next</strong>.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=889" rel="attachment wp-att-889"><img class="aligncenter size-full wp-image-889" title="Contoso_Pivot_07" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_07.gif" alt="" height="610" width="630"></a></p>
+<p>In the <strong>Select Tables</strong> <strong>and</strong> <strong>Views</strong>
+ page of the wizard, you can select the tables you want to use in your 
+cube.&nbsp; Only tables you select to be part of your view can appear in
+ the cube.&nbsp; You do not need to include all of the tables in the 
+selected database.&nbsp; I prefer to select first the fact table I want 
+to use which in this case is: <em>FactSales</em>.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=890" rel="attachment wp-att-890"><img class="aligncenter size-full wp-image-890" title="Contoso_Pivot_08" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_08.gif" alt="" height="610" width="630"></a></p>
+<p>I could manually select the dimension table I wanted to use or I could just select the fact table in the <strong>Included Objects</strong> list and then click the <strong>Add Related Tables</strong>
+ button.&nbsp; The wizard looks at the relations between the keys in the
+ fact table and the other tables in the database to determine which 
+tables to pull over to the <strong>Included Objects</strong> list.&nbsp;
+ If the wizard pulls over any tables I really do not care about for the 
+pivot table I am trying to create, I can simply select them and use the 
+left pointing arrow key to send them back to the <strong>Available Objects</strong> list to wait for another opportunity to join a cube.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=891" rel="attachment wp-att-891"><img class="aligncenter size-full wp-image-891" title="Contoso_Pivot_09" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_09.gif" alt="" height="610" width="630"></a></p>
+<p>When I click <strong>Next</strong>, the wizard prompts me to provide a name for the view.&nbsp; Again, by default, it uses the name of <strong>Data Source</strong> that is usually fine with me.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=892" rel="attachment wp-att-892"><img class="aligncenter size-full wp-image-892" title="Contoso_Pivot_10" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_10.gif" alt="" height="610" width="630"></a></p>
+<p>You will then see a diagram of your tables that shows our fact table <em>FactSales</em>
+ as the center of a star schema.&nbsp; We will come back to this diagram
+ in future weeks to show how we can rename objects to more user-friendly
+ names and create calculated columns.</p>
+<p>&nbsp;</p>
+<p>First, let us just right click on the fact table header.&nbsp; This opens a popup menu.&nbsp; Select <strong>Explore data</strong> from the list of options.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=894" rel="attachment wp-att-894"><img class="aligncenter size-full wp-image-894" title="Contoso_Pivot_12" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_12.gif" alt=""></a></p>
+<p>SSAS now shows us a new window with a set four tabs across the top: <em>Table, Pivot Table, Chart</em>, and <em>Pivot Chart</em>.&nbsp;
+ In the Table view, you can see all of the fields in the fact 
+table.&nbsp; In fact, this almost looks like an Excel spreadsheet of the
+ data.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=895" rel="attachment wp-att-895"><img class="aligncenter size-full wp-image-895" title="Contoso_Pivot_13" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_13.gif" alt="" height="305" width="630"></a></p>
+<p>Next, click the <strong>Pivot Table</strong> tab.&nbsp; This begins 
+by displaying an empty pivot table with a list of the fields in the fact
+ table in something that looks like the Excel Pivot table field list 
+along the right side of the screen.&nbsp; You can drag any of the fields
+ into the table to create display measures as a function of any of the 
+other fields such as the dimension keys.&nbsp; In the figure below, you 
+can see that I can display data by year and quarter.&nbsp; In fact, 
+there are several other date options available from the field 
+list.&nbsp; How did this data get there when the original fact table did
+ not include these fields?&nbsp; There was a field that contained a <strong>Date Key</strong>.&nbsp;
+ SSAS uses this field to create automatically some of the more common 
+hierarchy elements for dates.&nbsp; On the other hand, the <strong>Channel Key</strong>
+ shown as the row dimension only contains four values, 1 through 4 which
+ by themselves does not tell us much.&nbsp; However, the point is that 
+we were able to generate a simple pivot table directly from the fact 
+table.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=896" rel="attachment wp-att-896"><img class="aligncenter size-full wp-image-896" title="Contoso_Pivot_14" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_14.gif" alt="" height="230" width="630"></a></p>
+<p>The third tab is <strong>Chart</strong>.&nbsp; Clicking on this tab 
+displays simple counts of records by the selected fields from the fact 
+table.&nbsp; It picks several fields by default, but if you click the 
+bar at the top of the charts (<em>Currency Key, Store Key, Promotion Key</em>, and <em>Channel Key</em>
+ in the figure below, you can pick any of the fields from the fact 
+table.&nbsp; Note that for some fields, the data chart groups values 
+together to display the columns because any individual chart will not 
+display more than 10 columns.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=897" rel="attachment wp-att-897"><img class="aligncenter size-full wp-image-897" title="Contoso_Pivot_15" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_15.gif" alt="" height="490" width="630"></a></p>
+<p>Finally, the fourth tab is a pivot chart.&nbsp; In the chart below, I am only displaying the sum of the <strong>Sales</strong> <strong>Amount</strong> by <strong>Channel Key</strong>.&nbsp; I could add another field as a series by dragging one of the fields to the <strong>Drop Series Fields Here</strong> area on the right side of the chart.</p>
+<p><a sl-processed="1" href="http://sharepointmike.wordpress.com/?attachment_id=898" rel="attachment wp-att-898"><img class="aligncenter size-full wp-image-898" title="Contoso_Pivot_16" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/contoso_pivot_16.gif" alt="" height="487" width="630"></a></p>
+<p>Perhaps if we had further denormalized the fact table by adding the 
+dimension labels into the fact table instead of having keys to link to 
+dimension tables, we could have created the entire pivot table/chart 
+analysis right here, captured the screen images and pasted them into a 
+Word document as a report.&nbsp; However, what I showed here today is 
+merely a way to get a quick look at the data, not to create a final 
+product.&nbsp; To create a final product, you will want to take the next
+ step and create a cube.&nbsp; Next week I will continue this example by
+ showing how to build that cube.</p>
+<p>C’ya later.</p>
+
+<div class="wpa" style="position: relative; width:300px; text-align: center; padding: 0; margin: 10px auto; overflow: hidden; clear: both;">
+<a sl-processed="1" style="position: absolute; text-align: left; display: block; font: 9px/1 sans-serif; text-decoration: underline;" href="http://en.wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+<script type="text/javascript">
+		var wpcom_adclk_hovering = false;
+		var wpcom_adclk_recorded = false;
+		var wpcom_adclk_theme = "Enterprise";
+		var wpcom_adclk_slot = "wpcom_below_post_adsafe";
+		var wpcom_adclk_network = ( typeof wpcom_adclk_network === "undefined" ) ? "" : wpcom_adclk_network ;
+
+		jQuery(document).ready( function() {
+			function wpcom_adclk_hover_yes() { wpcom_adclk_hovering = true; }
+			function wpcom_adclk_hover_no() { wpcom_adclk_hovering = false; }
+			jQuery(".wpa").click(wpcom_adclk_click);
+			jQuery(".wpa iframe").hover( wpcom_adclk_hover_yes, wpcom_adclk_hover_no );
+			jQuery(".wpa object").hover( wpcom_adclk_hover_yes, wpcom_adclk_hover_no );
+
+			jQuery(window).blur( function() {
+				if ( wpcom_adclk_hovering ) { wpcom_adclk_click(); }
+			});
+		});
+
+		function wpcom_adclk_impression() {
+			var stat_gif = document.location.protocol + "//stats.wordpress.com/g.gif?v=wpcom-no-pv";
+			stat_gif += "&x_ads_imp_theme=" + wpcom_adclk_theme;
+			stat_gif += "&x_ads_imp_placement="+wpcom_adclk_slot;
+			stat_gif += "&x_ads_imp_network=" + wpcom_adclk_network;
+			stat_gif += "&x_ads_imp_theme_network="+wpcom_adclk_theme+"_"+wpcom_adclk_network;
+			new Image().src = stat_gif + "&baba=" + Math.random();
+			return true;
+		}
+
+		function wpcom_adclk_click() {
+			if (wpcom_adclk_recorded) { return true; } // no double counting
+			var stat_gif = document.location.protocol + "//stats.wordpress.com/g.gif?v=wpcom-no-pv";
+			stat_gif += "&x_ads_click_theme=" + wpcom_adclk_theme;
+			stat_gif += "&x_ads_click_placement="+wpcom_adclk_slot;
+			stat_gif += "&x_ads_click_network=" + wpcom_adclk_network;
+			stat_gif += "&x_ads_click_theme_network="+wpcom_adclk_theme+"_"+wpcom_adclk_network;
+
+			new Image().src = stat_gif + "&baba=" + Math.random();
+			wpcom_adclk_recorded = true;
+			var now=new Date(); var end=now.getTime()+250;
+			while(true){now=new Date();if(now.getTime()>end){break;}}
+			return true;
+		}
+	
+if ( typeof GA_googleAddAttr == 'function' ) {
+GA_googleAddAttr("AdOpt", "1");
+GA_googleAddAttr("Origin", "other");
+GA_googleAddAttr("LangId", "1");
+GA_googleAddAttr("Domain", "sharepointmike.wordpress.com");
+GA_googleAddAttr("BlogId", "7438126");
+GA_googleAddAttr("PageURL", "http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/");
+GA_googleAddAttr("AdSafe", "1");
+GA_googleAddAttr("Autotag", "technology");
+GA_googleAddAttr("Tag", "computers-and-internet");
+GA_googleAddAttr("Tag", "excel");
+GA_googleAddAttr("Tag", "powerpivot");
+GA_googleAddAttr("Tag", "sql-server");
+GA_googleAddAttr("Partner", "AOL");
+GA_googleAddAttr("theme_bg", "f0f0f0");
+GA_googleAddAttr("theme_border", "cccccc");
+GA_googleAddAttr("theme_text", "555555");
+GA_googleAddAttr("theme_link", "008DCF");
+GA_googleAddAttr("theme_url", "008DCF");
+GA_googleAddAdSensePageAttr("google_page_url", "http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/");
+GA_googleFillSlot("wpcom_below_post_adsafe");
+}
+</script><script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/ads"></script><div id="google_ads_div_wpcom_below_post_adsafe_ad_wrapper">
+<div id="google_ads_div_wpcom_below_post_adsafe_ad_container" style="display:inline-block;"><div style="display: block; width: 100%; opacity: 1; height: 250px;" id="grv-personalization-16"><iframe style="overflow: hidden; width: 100%; height: 250px; opacity: 1;" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/w2.htm" frameborder="0" scrolling="no"></iframe></div>
+<script type="text/javascript">
+  //<![CDATA[
+ function _grc(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
+    (function(){
+    window.gravityInsightsParams = {
+      'type': 'content',
+      'site_guid': '361837bc83c4c2cba7b350dff56a564f',
+      'user_guid': _grc('grvinsights'),
+      'sourceUrl': 'sharepointmike.wordpress.com',
+    };
+    var b,c,d,e,f,g,h,i;f=(b=!0===gravityInsightsParams.useGravityUserGuid?1:0,e=b?"":gravityInsightsParams.user_guid||(null!=(g=/grvinsights=([^;]+)/.exec(document.cookie))?g[1]:void 0)||"",c=(null!=(h=window.jQuery)?null!=(i=h.fn)?i.jquery:void 0:void 0)||"","http://rma-api.gravity.com/v1/api/intelligence/wl?jq="+c+"&sg="+gravityInsightsParams.site_guid+"&ug="+e+"&ugug="+b+"&pl=16&id=grv-personalization-16&type=iframe");
+    window.grvMakeScript=function(j){var a;a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=j;return a};d=document.getElementsByTagName("script")[0];f&&d.parentNode.insertBefore(window.grvMakeScript(f),d);})();
+  //]]>
+</script>
+
+</div>
+</div>
+
+</div>
+<style type="text/css">
+div.wpa>div { margin-top: 1em; } #google_ads_div_wpcom_below_post_adsafe_ad_container { display: block !important; }
+</style>
+<script type="text/javascript">
+jQuery( window ).load( function() {
+    if ( jQuery(".wpa script[src*='virool.com']").length > 0 || jQuery(".wpa script[src*='shareth.ru']").length > 0 || jQuery(".wpa iframe[src*='boomvideo.tv']").length > 0 || jQuery(".wpa iframe[src*='viewablemedia.net']").length > 0 || jQuery(".wpa .sharethrough-placement").length > 0 ) {
+        jQuery( '.wpa' ).css( 'width', '400px' );
+    }
+setTimeout(function(){if(typeof GS_googleAddAdSenseService !== 'function'){new Image().src=document.location.protocol+"//stats.wordpress.com/g.gif?v=wpcom-no-pv&x_noads=adblock&baba="+Math.random()}},100);
+} );
+</script>
+<div id="jp-post-flair" class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-print"><a sl-processed="1" rel="nofollow" class="share-print sd-button share-icon" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/#print" title="Click to print"><span>Print</span></a></li><li class="share-email share-service-visible"><a sl-processed="1" rel="nofollow" class="share-email sd-button share-icon" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/?share=email&amp;nb=1" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-7438126-881-5333dc7fc54cf" data-src="//widgets.wp.com/likes/#blog_id=7438126&amp;post_id=881&amp;origin=sharepointmike.wordpress.com&amp;obj_id=7438126-881-5333dc7fc54cf" data-name="like-post-frame-7438126-881-5333dc7fc54cf"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-7438126-881-5333dc7fc54cf" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/a.htm" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="1508" data-post-format="false"><span class="jp-relatedposts-post-title"><a sl-processed="1" data-position="0" data-origin="881" rel="nofollow" title="What is Up With PowerPivot in Office 2013?
+
+Just about two years ago I discovered this remarkable tool called PowerPivot and was blown away by two important facts.&nbsp; First this add-in to Excel 2010 allowed me to manipulate&amp;hellip;" href="http://sharepointmike.wordpress.com/2013/03/02/what-is-up-with-powerpivot-in-office-2013/" class="jp-relatedposts-post-a">What is Up With PowerPivot in Office 2013?</a></span><span class="jp-relatedposts-post-context">In "Business Intelligence"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="750" data-post-format="false"><span class="jp-relatedposts-post-title"><a sl-processed="1" data-position="1" data-origin="881" rel="nofollow" title="Time in a Pivot Table
+
+Last week we looked at how to build and use a Date dimension table based on dates from our selected fact table to be used within a SSAS cube.&nbsp; Until&amp;hellip;" href="http://sharepointmike.wordpress.com/2012/03/31/time-in-a-pivot-table/" class="jp-relatedposts-post-a">Time in a Pivot Table</a></span><span class="jp-relatedposts-post-context">In "Business Intelligence"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="1140" data-post-format="false"><span class="jp-relatedposts-post-title"><a sl-processed="1" data-position="2" data-origin="881" rel="nofollow" title="Bringing Computing to the Masses
+
+For the past year or more, I’ve been calling PowerPivot the BI tool for the masses.&nbsp; I don’t know who I heard say it first.&nbsp; It very well could have&amp;hellip;" href="http://sharepointmike.wordpress.com/2012/08/14/bringing-computing-to-the-masses/" class="jp-relatedposts-post-a">Bringing Computing to the Masses</a></span><span class="jp-relatedposts-post-context"></span></p></div></div></div><div class="clear"></div>
+					
+					<!--
+					<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/"
+    dc:identifier="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/"
+    dc:title="Pivot Tables in&nbsp;SSAS?"
+    trackback:ping="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/trackback/" />
+</rdf:RDF>					-->
+
+				</div>
+
+				<div class="post-meta">
+					<p>
+						<span class="categories">Filed under <a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/" title="View all posts in Computers and Internet" rel="category tag">Computers and Internet</a>, <a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/excel/" title="View all posts in Excel" rel="category tag">Excel</a>, <a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/powerpivot/" title="View all posts in PowerPivot" rel="category tag">PowerPivot</a>, <a sl-processed="1" href="http://sharepointmike.wordpress.com/category/computers-and-internet/sql-server/" title="View all posts in SQL Server" rel="category tag">SQL Server</a></span>
+											</p>
+				</div>
+
+			</div>
+
+						<div class="author-box">
+				<p><img id="grav-9e502df8dfa23d1b53e25f20eeeac912-0" alt="" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/9e502df8dfa23d1b53e25f20eeeac912.jpeg" class="avatar avatar-70 grav-hashed grav-hijack" height="70" width="70"><strong>About sharepointmike</strong><br>I am interested in all things scientific and technical, but especially SharePoint and SQL Server.</p>
+			</div>
+			
+						<p></p>
+
+			<div id="comments">
+	
+
+	<h3 id="comments-title">One Response to <em>Pivot Tables in&nbsp;SSAS?</em>	</h3>
+
+	<ol class="commentlist snap_preview">
+				<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-1214">
+		<div id="comment-1214">
+		<div class="comment-author vcard">
+			<img id="grav-ef4d225c1a33fe82d3620afe94894147-0" alt="" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/ef4d225c1a33fe82d3620afe94894147.png" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a sl-processed="1" href="http://www.nerdfitness.com/" rel="external nofollow" class="url">nerd</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/#comment-1214">July 3, 2013 at 7:28 AM</a></div>
+
+		<div class="comment-body"><p>Howdy! This post could not be written much better! Looking at this article reminds me of my<br>
+previous roommate! He always kept preaching about this.<br>
+I am going to forward this information to him.<br>
+Pretty sure he’s going to have a great read. I appreciate you for sharing!</p>
+</div>
+
+		<div class="reply">
+			<a sl-processed="1" class="comment-reply-link" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/?replytocom=1214#respond" onclick='return addComment.moveForm("comment-1214", "1214", "respond", "881")'>Reply</a>		</div>
+	</div>
+
+	</li><!-- #comment-## -->
+	</ol>
+
+
+								<div id="respond" class="comment-respond js">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a sl-processed="1" rel="nofollow" id="cancel-comment-reply-link" href="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://sharepointmike.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																										
+
+
+												<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="65fce9c606" type="hidden"><input name="_wp_http_referer" value="/2012/05/12/pivot-tables-in-ssas/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="guest" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea class="autosizejs " tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; -moz-box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: Arial,Helvetica,Tahoma,Verdana,sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none; word-spacing: 0px; text-indent: 0px; line-height: 16px; width: 608px;">Enter your comment here...</textarea><textarea style="height: 36px; overflow: hidden; word-wrap: break-word; resize: horizontal;" placeholder="Enter your comment here..." id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div style="display: none;" id="comment-form-identity">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a sl-processed="1" href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a sl-processed="1" href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a sl-processed="1" href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a sl-processed="1" href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/a_002.htm" allowtransparency="true" seamless="seamless" frameborder="0" height="24" scrolling="no" width="24"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a sl-processed="1" href="https://gravatar.com/site/signup/" target="_blank">				<img src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="text"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/wplogo.png" alt="WordPress.com Logo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/ad516503a11cd5ca435acc9bb6523536.png" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a sl-processed="1" href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+	
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div style="display: none;" id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of follow-up comments via email.</label></p><p class="post-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" tabindex="7" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog" style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+												<p style="display: none;" class="form-submit">
+							<input name="submit" id="comment-submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="881" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						
+<input name="genseq" value="1395907711" type="hidden">
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="a97ac12bde" type="hidden"></p><script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/form.js"></script>
+<p style="display: none;"><input id="ak_js" name="ak_js" value="1395907715478" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+			<div style="clear: both"></div>
+</div><!-- #comments -->
+	</div>
+
+<div id="sidebar">
+
+	<div id="calendar-4" class="widget widget_calendar"><div id="calendar_wrap"><table id="wp-calendar">
+	<caption>May 2012</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Sunday">S</th>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/04/" title="View posts for April 2012">« Apr</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/06/" title="View posts for June 2012">Jun »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="2" class="pad">&nbsp;</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/01/" title="Is Innovation a Four Letter&nbsp;Word?">1</a></td><td>2</td><td>3</td><td>4</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/05/" title="Hiding Pivot Table&nbsp;Columns">5</a></td>
+	</tr>
+	<tr>
+		<td>6</td><td>7</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/08/" title="Are iPads Toys or the Tool of the&nbsp;Future">8</a></td><td>9</td><td>10</td><td>11</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/12/" title="Pivot Tables in&nbsp;SSAS?">12</a></td>
+	</tr>
+	<tr>
+		<td>13</td><td>14</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/15/" title="Evaluating Competency">15</a></td><td>16</td><td>17</td><td>18</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/19/" title="Building a Basic SSAS&nbsp;Cube">19</a></td>
+	</tr>
+	<tr>
+		<td>20</td><td>21</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/22/" title="The Commute to Work Is Killing Me and&nbsp;You.">22</a></td><td>23</td><td>24</td><td>25</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/26/" title="Formatting Your SSAS (Cube that&nbsp;is)">26</a></td>
+	</tr>
+	<tr>
+		<td>27</td><td>28</td><td><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/29/" title="When Quitters Win!">29</a></td><td>30</td><td>31</td>
+		<td class="pad" colspan="2">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></div><div id="blog_subscription-4" class="widget widget_blog_subscription"><h4><label for="subscribe-field">Email Subscription</label></h4>
+			<form action="https://subscribe.wordpress.com" method="post" accept-charset="utf-8" id="subscribe-blog">
+									<p>Enter your email address to subscribe to this blog and receive notifications of new posts by email.</p>
+<p>Join 81 other followers</p>
+					<p><input name="email" style="width: 95%; padding: 1px 2px" id="subscribe-field" type="text"></p>
+				
+				<p>
+					<input name="action" value="subscribe" type="hidden">
+					<input name="blog_id" value="7438126" type="hidden">
+					<input name="source" value="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/" type="hidden">
+					<input name="sub-type" value="widget" type="hidden">
+					<input name="redirect_fragment" value="blog_subscription-4" type="hidden">
+					<input id="_wpnonce" name="_wpnonce" value="67394d5c01" type="hidden">					<input value="Sign me up!" type="submit">
+				</p>
+			</form>
+			
+</div><div id="archives-4" class="widget widget_archive"><h4>My Archives</h4>		<ul>
+			<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2014/03/">March 2014</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2014/02/">February 2014</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2014/01/">January 2014</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/12/">December 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/10/">October 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/09/">September 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/08/">August 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/07/">July 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/06/">June 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/05/">May 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/04/">April 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/03/">March 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/02/">February 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2013/01/">January 2013</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/12/">December 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/11/">November 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/10/">October 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/09/">September 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/08/">August 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/07/">July 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/06/">June 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/05/">May 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/04/">April 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/03/">March 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/02/">February 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2012/01/">January 2012</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/12/">December 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/11/">November 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/10/">October 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/08/">August 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/07/">July 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/06/">June 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/04/">April 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/03/">March 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/02/">February 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2011/01/">January 2011</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2010/11/">November 2010</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2010/10/">October 2010</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2009/06/">June 2009</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2009/04/">April 2009</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2008/02/">February 2008</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2006/12/">December 2006</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2006/10/">October 2006</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2006/08/">August 2006</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2006/02/">February 2006</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2005/11/">November 2005</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2005/09/">September 2005</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2005/08/">August 2005</a></li>
+	<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/2005/05/">May 2005</a></li>
+		</ul>
+</div><div id="image-4" class="widget widget_image"><div style="overflow:hidden;"><a sl-processed="1" href="http://sharepoint-community.net/"><img src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/sharepointcommunitymember.jpg" class="alignright" height="96" width="270"></a></div>
+</div><div id="wp_tag_cloud-2" class="widget wp_widget_tag_cloud"><h4>Topics I talk about</h4><div style="overflow:hidden"><a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/awards/" class="tag-link-6758" title="1 topic" style="font-size: 8pt;">awards</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/bcs/" class="tag-link-16153" title="1 topic" style="font-size: 8pt;">BCS</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/bi/" class="tag-link-19316" title="1 topic" style="font-size: 8pt;">BI</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/business/" class="tag-link-179" title="1 topic" style="font-size: 8pt;">business</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/conferences/" class="tag-link-9204" title="1 topic" style="font-size: 8pt;">Conferences</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/denali/" class="tag-link-354099" title="1 topic" style="font-size: 8pt;">Denali</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/document-libraries/" class="tag-link-1288720" title="1 topic" style="font-size: 8pt;">document libraries</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/dqs/" class="tag-link-3152439" title="1 topic" style="font-size: 8pt;">DQS</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/excel-2013/" class="tag-link-96292658" title="1 topic" style="font-size: 8pt;">Excel 2013</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/external-content-type/" class="tag-link-29412128" title="1 topic" style="font-size: 8pt;">External Content Type</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/external-data/" class="tag-link-31332965" title="1 topic" style="font-size: 8pt;">External Data</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/governance/" class="tag-link-16505" title="1 topic" style="font-size: 8pt;">Governance</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/governance-plan/" class="tag-link-35398780" title="1 topic" style="font-size: 8pt;">governance plan</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/hiring/" class="tag-link-113932" title="1 topic" style="font-size: 8pt;">Hiring</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/interview/" class="tag-link-11788" title="1 topic" style="font-size: 8pt;">Interview</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/management/" class="tag-link-4236" title="1 topic" style="font-size: 8pt;">Management</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/orange-county-public-school/" class="tag-link-10235909" title="1 topic" style="font-size: 8pt;">orange county public school</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/pass/" class="tag-link-322701" title="1 topic" style="font-size: 8pt;">PASS</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/pivot-tables/" class="tag-link-1650242" title="1 topic" style="font-size: 8pt;">Pivot Tables</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/powerpivot/" class="tag-link-26818141" title="1 topic" style="font-size: 8pt;">PowerPivot</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/regular-expressions/" class="tag-link-44443" title="1 topic" style="font-size: 8pt;">Regular Expressions</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/research/" class="tag-link-668" title="1 topic" style="font-size: 8pt;">research</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/science/" class="tag-link-173" title="1 topic" style="font-size: 8pt;">science</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/sharepoint/" class="tag-link-37382" title="3 topics" style="font-size: 22pt;">SharePoint</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/sharepoint-2010/" class="tag-link-16434198" title="1 topic" style="font-size: 8pt;">SharePoint 2010</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/sharepoint-ribbon-buttons/" class="tag-link-53696652" title="1 topic" style="font-size: 8pt;">SharePoint Ribbon Buttons</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/software/" class="tag-link-581" title="1 topic" style="font-size: 8pt;">software</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/sqlsaturday/" class="tag-link-19423854" title="1 topic" style="font-size: 8pt;">SQLSaturday</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/sql-saturday/" class="tag-link-20835363" title="1 topic" style="font-size: 8pt;">SQL Saturday</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/sql-server/" class="tag-link-6407" title="2 topics" style="font-size: 16.4pt;">SQL Server</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/statistics/" class="tag-link-5849" title="1 topic" style="font-size: 8pt;">Statistics</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/surveys/" class="tag-link-1092" title="1 topic" style="font-size: 8pt;">Surveys</a>
+<a sl-processed="1" href="http://sharepointmike.wordpress.com/tag/technology/" class="tag-link-6" title="1 topic" style="font-size: 8pt;">technology</a></div></div><div id="twitter-3" class="widget widget_twitter"><h4><a sl-processed="1" href="http://twitter.com/SharePointMikeA">SharePointMikeA</a></h4><ul class="tweets">
+			<li>
+				cedjtjde958384 				<a sl-processed="1" href="http://twitter.com/SharePointMikeA/statuses/436315229010812928" class="timesince">1&nbsp;month&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				inutagu826449 				<a sl-processed="1" href="http://twitter.com/SharePointMikeA/statuses/436315224409657344" class="timesince">1&nbsp;month&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				fyxozif530535 				<a sl-processed="1" href="http://twitter.com/SharePointMikeA/statuses/436315219808497664" class="timesince">1&nbsp;month&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				isypu798430 				<a sl-processed="1" href="http://twitter.com/SharePointMikeA/statuses/436315215240892416" class="timesince">1&nbsp;month&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				jmjfugif498471 				<a sl-processed="1" href="http://twitter.com/SharePointMikeA/statuses/436315210866229248" class="timesince">1&nbsp;month&nbsp;ago</a>
+			</li>
+
+			</ul><iframe style="width: 169px; height: 20px;" data-twttr-rendered="true" title="Twitter Follow Button" class="twitter-follow-button twitter-follow-button" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/follow_button.htm" allowtransparency="true" id="twitter-widget-0" frameborder="0" scrolling="no"></iframe></div><div id="meta-5" class="widget widget_meta"><h4>Meta</h4>			<ul>
+			<li><a sl-processed="1" href="http://wordpress.com/signup/?ref=wplogin">Register</a></li>			<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/wp-login.php">Log in</a></li>
+			<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a sl-processed="1" href="http://sharepointmike.wordpress.com/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a sl-processed="1" href="http://wordpress.com/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.com</a></li>						</ul>
+</div>
+</div>
+</div>
+
+
+<div id="footer">
+	<div class="footerleft">
+		<p><a sl-processed="1" href="http://wordpress.com/?ref=footer">Blog at WordPress.com</a>.</p>
+    </div>
+    <div class="footerright">
+	    <a sl-processed="1" href="http://theme.wordpress.com/themes/enterprise/" title="Learn more about this theme">The Enterprise Theme</a>.    </div>
+</div>
+
+</div>
+
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-9e502df8dfa23d1b53e25f20eeeac912">
+	</div>
+	<div class="grofile-hash-map-ef4d225c1a33fe82d3620afe94894147">
+	</div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"http:\/\/sharepointmike.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"http:\/\/sharepointmike.wordpress.com\/wp-login.php?action=logout&_wpnonce=88302c0237","homeURL":"http:\/\/sharepointmike.wordpress.com\/","postID":"881","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/a_003.js"></script>
+
+	<div style="bottom: -285px;" id="bit" class="loggedout-follow-normal">
+		<a sl-processed="1" class="bsub" href="javascript:void(0)"><span id="bsub-text">Follow</span></a>
+		<div id="bitsubscribe">
+
+					<h3><label for="loggedout-follow-field">Follow “SharePointMike's Blog”</label></h3>
+
+			<form action="https://subscribe.wordpress.com" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post delivered to your Inbox.</p>
+
+			<p id="loggedout-follow-error" style="display: none;"></p>
+
+						<p class="bit-follow-count">Join 81 other followers</p>
+			<p><input name="email" value="Enter your email address" onfocus='this.value=(this.value=="Enter your email address") ? "" : this.value;' onblur='this.value=(this.value=="") ? "Enter email address" : this.value;' id="loggedout-follow-field" type="email"></p>
+
+			<input name="action" value="subscribe" type="hidden">
+			<input name="blog_id" value="7438126" type="hidden">
+			<input name="source" value="http://sharepointmike.wordpress.com/2012/05/12/pivot-tables-in-ssas/" type="hidden">
+			<input name="sub-type" value="loggedout-follow" type="hidden">
+
+			<input id="_wpnonce" name="_wpnonce" value="67394d5c01" type="hidden"><input name="_wp_http_referer" value="/2012/05/12/pivot-tables-in-ssas/" type="hidden">
+			<p id="bsub-subscribe-button"><input value="Sign me up" type="submit"></p>
+			</form>
+					<div id="bsub-credit"><a sl-processed="1" href="http://wordpress.com/signup/?ref=lof">Powered by WordPress.com</a></div>
+		</div><!-- #bitsubscribe -->
+	</div><!-- #bit -->
+	<script type="text/javascript">
+	var skimlinks_pub_id = "725X584219"
+	var skimlinks_sitename = "sharepointmike.wordpress.com";
+	</script>
+	<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/725X1342.js"></script><script type="text/javascript" charset="UTF-8" id="polldaddyRatings"><!--//--><![CDATA[//><!--
+PDRTJS_settings_3124298_post_881={"id":3124298,"unique_id":"wp-post-881","title":"Pivot%20Tables%20in%26nbsp%3BSSAS%3F","permalink":"http:\/\/sharepointmike.wordpress.com\/2012\/05\/12\/pivot-tables-in-ssas\/","item_id":"_post_881"}; if ( typeof PDRTJS_RATING !== 'undefined' ){if ( typeof PDRTJS_3124298_post_881 == 'undefined' ){PDRTJS_3124298_post_881 = new PDRTJS_RATING( PDRTJS_settings_3124298_post_881 );}}
+//--><!]]></script><script type="text/javascript" charset="UTF-8" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/rating.js"></script>	<div id="sharing_email" style="display: none;">
+		<form action="/2012/05/12/pivot-tables-in-ssas/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input name="target_email" id="target_email" type="email">
+
+			
+				<label for="source_name">Your Name</label>
+				<input name="source_name" id="source_name" type="text">
+
+				<label for="source_email">Your Email Address</label>
+				<input name="source_email" id="source_email" type="email">
+
+			
+			<div class="recaptcha" id="sharing_recaptcha"></div><input name="recaptcha_public_key" id="recaptcha_public_key" value="6LcYW8MSAAAAADBAuEH9yaPcF7lWh11Iq62ZKtoo" type="hidden">
+			<img style="float: right; display: none" class="loading" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/loading.gif" alt="loading" height="16" width="16">
+			<input value="Send Email" class="sharing_send" type="submit">
+			<a sl-processed="1" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		<iframe src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/master.htm" id="likes-master" name="likes-master" style="display:none;" scrolling="no"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		<script type="text/javascript">
+		//<![CDATA[
+			var jetpackLikesWidgetQueue = [];
+			var jetpackLikesWidgetBatch = [];
+			var jetpackLikesMasterReady = false;
+
+			function JetpackLikespostMessage( message, target ) {
+				if ( "string" === typeof message ){
+					try{
+						message = JSON.parse( message );
+					}
+					catch(e) {
+						return;
+					}
+				}
+
+				pm( {
+					target: target,
+					type: 'likesMessage',
+					data: message,
+					origin: '*'
+				} );
+			}
+
+			function JetpackLikesBatchHandler() {
+				var requests = [];
+				jQuery( 'div.jetpack-likes-widget-unloaded' ).each( function( i ) {
+					if ( jetpackLikesWidgetBatch.indexOf( this.id ) > -1 )
+						return;
+					jetpackLikesWidgetBatch.push( this.id );
+					var regex = /like-(post|comment)-wrapper-(\d+)-(\d+)-(\w+)/;
+					var match = regex.exec( this.id );
+					if ( ! match || match.length != 5 )
+						return;
+
+					var info = {
+						blog_id: match[2],
+						width:   this.width
+					};
+
+					if ( 'post' == match[1] ) {
+						info.post_id = match[3];
+					} else if ( 'comment' == match[1] ) {
+						info.comment_id = match[3];
+					}
+
+					info.obj_id = match[4];
+
+					requests.push( info );
+				});
+
+				if ( requests.length > 0 ) {
+					JetpackLikespostMessage( { event: 'initialBatch', requests: requests }, window.frames['likes-master'] );
+				}
+			}
+
+			function JetpackLikesMessageListener( event ) {
+				if ( "undefined" == typeof event.event )
+					return;
+
+				if ( 'masterReady' == event.event ) {
+					jQuery( document ).ready( function() {
+						jetpackLikesMasterReady = true;
+
+						var stylesData = {
+								event: 'injectStyles'
+						};
+
+						if ( jQuery( 'iframe.admin-bar-likes-widget' ).length > 0 ) {
+							JetpackLikespostMessage( { event: 'adminBarEnabled' }, window.frames[ 'likes-master' ] );
+
+							stylesData.adminBarStyles = {
+								background: jQuery( '#wpadminbar .quicklinks li#wp-admin-bar-wpl-like > a' ).css( 'background' ),
+								isRtl: ( 'rtl' == jQuery( '#wpadminbar' ).css( 'direction' ) )
+							};
+						}
+
+						if ( !window.addEventListener )
+							jQuery( '#wp-admin-bar-admin-bar-likes-widget' ).hide();
+
+						stylesData.textStyles = {
+							color: jQuery( '.sd-text-color').css( 'color' ),
+							fontFamily: jQuery( '.sd-text-color' ).css( 'font-family' ),
+							fontSize: jQuery( '.sd-text-color' ).css( 'font-size' ),
+							direction: jQuery( '.sd-text-color' ).css( 'direction' ),
+							fontWeight: jQuery( '.sd-text-color' ).css( 'font-weight' ),
+							fontStyle: jQuery( '.sd-text-color' ).css( 'font-style' ),
+							textDecoration: jQuery( '.sd-text-color' ).css('text-decoration')
+						};
+
+						stylesData.linkStyles = {
+							color: jQuery( '.sd-link-color' ).css('color'),
+							fontFamily: jQuery( '.sd-link-color' ).css('font-family'),
+							fontSize: jQuery( '.sd-link-color' ).css('font-size'),
+							textDecoration: jQuery( '.sd-link-color' ).css('text-decoration'),
+							fontWeight: jQuery( '.sd-link-color' ).css( 'font-weight' ),
+							fontStyle: jQuery( '.sd-link-color' ).css( 'font-style' )
+						};
+
+						JetpackLikespostMessage( stylesData, window.frames[ 'likes-master' ] );
+
+						JetpackLikesBatchHandler();
+
+						jQuery( document ).on( 'inview', 'div.jetpack-likes-widget-unloaded', function() {
+							jetpackLikesWidgetQueue.push( this.id );
+						});
+					});
+				}
+
+				if ( 'showLikeWidget' == event.event ) {
+					jQuery( '#' + event.id + ' .post-likes-widget-placeholder'  ).fadeOut( 'fast', function() {
+						jQuery( '#' + event.id + ' .post-likes-widget' ).fadeIn( 'fast', function() {
+							JetpackLikespostMessage( { event: 'likeWidgetDisplayed', blog_id: event.blog_id, post_id: event.post_id, obj_id: event.obj_id }, window.frames['likes-master'] );
+						});
+					});
+				}
+
+				if ( 'clickReblogFlair' == event.event ) {
+					wpcom_reblog.toggle_reblog_box_flair( event.obj_id );
+				}
+
+				if ( 'showOtherGravatars' == event.event ) {
+					var $container = jQuery( '#likes-other-gravatars' );
+					var $list = $container.find( 'ul' );
+
+					$container.hide();
+					$list.html( '' );
+
+					$container.find( '.likes-text span' ).text( event.total );
+
+					jQuery.each( event.likers, function( i, liker ) {
+						$list.append( '<li class="' + liker.css_class + '"><a href="' + liker.profile_URL + '" class="wpl-liker" rel="nofollow" target="_parent"><img src="' + liker.avatar_URL + '" alt="' + liker.name + '" width="30" height="30" style="padding-right: 3px;" /></a></li>');
+					} );
+
+					var offset = jQuery( "[name='" + event.parent + "']" ).offset();
+
+					$container.css( 'left', offset.left + event.position.left - 10 + 'px' );
+					$container.css( 'top', offset.top + event.position.top - 33 + 'px' );
+
+					var rowLength = Math.floor( event.width / 37 );
+					var height = ( Math.ceil( event.likers.length / rowLength ) * 37 ) + 13;
+					if ( height > 204 ) {
+						height = 204;
+					}
+
+					$container.css( 'height', height + 'px' );
+					$container.css( 'width', rowLength * 37 - 7 + 'px' );
+
+					$list.css( 'width', rowLength * 37 + 'px' );
+
+					$container.fadeIn( 'slow' );
+
+					var scrollbarWidth = $list[0].offsetWidth - $list[0].clientWidth;
+					if ( scrollbarWidth > 0 ) {
+						$container.width( $container.width() + scrollbarWidth );
+						$list.width( $list.width() + scrollbarWidth );
+					}
+				}
+			}
+
+			pm.bind( 'likesMessage', function(e) { JetpackLikesMessageListener(e); } );
+
+			jQuery( document ).click( function( e ) {
+				var $container = jQuery( '#likes-other-gravatars' );
+
+				if ( $container.has( e.target ).length === 0 ) {
+					$container.fadeOut( 'slow' );
+				}
+			});
+
+			function JetpackLikesWidgetQueueHandler() {
+				var wrapperID;
+				if ( ! jetpackLikesMasterReady ) {
+					setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+					return;
+				}
+
+				if ( jetpackLikesWidgetQueue.length > 0 ) {
+					// We may have a widget that needs creating now
+					var found = false;
+					while( jetpackLikesWidgetQueue.length > 0 ) {
+						// Grab the first member of the queue that isn't already loading.
+						wrapperID = jetpackLikesWidgetQueue.splice( 0, 1 )[0];
+						if ( jQuery( '#' + wrapperID ).hasClass( 'jetpack-likes-widget-unloaded' ) ) {
+							found = true;
+							break;
+						}
+					}
+					if ( ! found ) {
+						setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+						return;
+					}
+				} else if ( jQuery( 'div.jetpack-likes-widget-unloaded' ).length > 0 ) {
+					// Grab any unloaded widgets for a batch request
+					JetpackLikesBatchHandler();
+
+					// Get the next unloaded widget
+					wrapperID = jQuery( 'div.jetpack-likes-widget-unloaded' ).first()[0].id;
+					if ( ! wrapperID ) {
+						// Everything is currently loaded
+						setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+						return;
+					}
+				}
+
+				if ( 'undefined' === typeof wrapperID ) {
+					setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+					return;
+				}
+
+				var $wrapper = jQuery( '#' + wrapperID );
+				$wrapper.find( 'iframe' ).remove();
+
+				if ( $wrapper.hasClass( 'slim-likes-widget' ) ) {
+					$wrapper.find( '.post-likes-widget-placeholder' ).after( "<iframe class='post-likes-widget jetpack-likes-widget' name='" + $wrapper.data( 'name' ) + "' height='22px' width='68px' frameBorder='0' scrolling='no' src='" + $wrapper.data( 'src' ) + "'></iframe>" );
+				} else {
+					$wrapper.find( '.post-likes-widget-placeholder' ).after( "<iframe class='post-likes-widget jetpack-likes-widget' name='" + $wrapper.data( 'name' ) + "' height='55px' width='100%' frameBorder='0' src='" + $wrapper.data( 'src' ) + "'></iframe>" );
+				}
+
+				$wrapper.removeClass( 'jetpack-likes-widget-unloaded' ).addClass( 'jetpack-likes-widget-loading' );
+
+				$wrapper.find( 'iframe' ).load( function( e ) {
+					var $iframe = jQuery( e.target );
+					$wrapper.removeClass( 'jetpack-likes-widget-loading' ).addClass( 'jetpack-likes-widget-loaded' );
+
+					JetpackLikespostMessage( { event: 'loadLikeWidget', name: $iframe.attr( 'name' ), width: $iframe.width() }, window.frames[ 'likes-master' ] );
+
+					if ( $wrapper.hasClass( 'slim-likes-widget' ) ) {
+						$wrapper.find( 'iframe' ).Jetpack( 'resizeable' );
+					}
+				});
+				setTimeout( JetpackLikesWidgetQueueHandler, 250 );
+			}
+			JetpackLikesWidgetQueueHandler();
+		//]]>
+		</script>
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/widgets.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var recaptcha_options = {"lang":"en"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/a.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/w.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({'blog':'7438126','v':'wpcom','tz':'-4','user_id':'0','post':'881','subd':'sharepointmike'});
+ex_go({'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWFnNncxc1tjZG9XVXhRfjNLanhKV3x0UkRXYlpyS24vdVZvQkMvZ21relRld0JHa1R3RyVWd189LEhKY1I2SUY9cjRqTkR2QkhVaH5ERGhfQ25+WCthU2pWbFNfVGdXQlU1JXxvL3xpbldVRW11NTRXOVI4VUM0LUtwPVo2XVdiaVNPMTdhT1hkLG84Y2NVSUNVVEYuNnpUTWJCUlBlRVNkUzFScnxLdTY0dmJ3SURwOEZPc1loVnI3ZiYzVnFKTGVBXUxKMVtnQ0wyLlptRWQsVTNBalNbMDlUYUJrczRXJnQxb2tUPVdlbkJGYm9jaW16U3NZbmZPLFAuQj83Mno5MndyaCZbMFN5XzlUZENEME0sbG1KfiZ6ZXpHbStmRm0tLDYxWlV3cT9MRkNyVnhD'});
+addLoadEvent(function(){linktracker_init('7438126',881);});
+	</script><img id="wpstats" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/g.gif" alt=""><img id="wpstats2" src="Pivot%20Tables%20in%20SSAS%20%20_%20SharePointMike%27s%20Blog_files/g_002.gif" alt="" style="display:none">
+<noscript><img src="http://stats.wordpress.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//stats.wordpress.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+<iframe style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_9237084245466"></iframe></body></html>

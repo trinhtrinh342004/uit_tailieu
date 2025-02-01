@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Đơn hàng Nhà hàng</title>
+    <style>
+        /* Base styles */
+        body {
+            font: 14px Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Typography */
+        .header {
+            font: bold 14px Arial;
+            color: blue;
+        }
+
+        h3 {text-align: center}
+
+        /* Tables */
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 10px;
+            font: bold 12px Arial;
+            color: #CC9;
+            background: #03C;
+        }
+
+        td {
+            padding: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* Forms */
+        select, 
+        input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        /* Buttons */
+        button {
+            padding: 5px 10px;
+            border: 0;
+            color: #fff;
+            cursor: pointer;
+            background: #f44336;
+        }
+
+        .print-button {
+            background: #4CAF50;
+            margin-top: 10px;
+        }
+
+        /* Layout */
+        .order-table {margin-top: 20px}
+    </style>
+</head>
+<body>
+    <form method = 'post'>
+        <table>
+            <tr>
+                <td>
+                    <span id="current-datetime"></span>
+                </td>
+                <td>
+                    Nhân viên: <span class="name">Nguyễn Văn A</span>
+                </td>
+            </tr>
+            <tr class = "menu">
+                <th colspan="2">
+                    <h3>THỰC ĐƠN</h3>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" class="menu-option" style="height: 250px;">
+                    <table>
+                        <tr>
+                            <th>Bàn</th>
+                            <th>Món ăn</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="table" id="table-select">
+                                    <option value="1">Bàn 1</option>
+                                    <option value="2">Bàn 2</option>
+                                    <option value="3">Bàn 3</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="dish" id="dish-select">
+                                    <option value="">Chọn món</option>
+                                    <option value="Bún bò,20000">Bún bò</option>
+                                    <option value="Hủ tiếu,18000">Hủ tiếu</option>
+                                    <option value="Bánh canh,17000">Bánh canh</option>
+                                    <option value="Phở bò,19000">Phở bò</option>
+                                    <option value="Nuôi,15000">Nuôi</option>
+                                    <option value="Bánh mì thịt,12000">Bánh mì thịt</option>
+                                    <option value="Bánh cuốn,15000">Bánh cuốn</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+        </table>
+    </form>
+
+
+    <div>
+        <form method="post">
+            <table class="order-tables">
+                <tr>
+                    <th>Bàn 1</th>
+                    <th>Bàn 2</th>
+                    <th>Bàn 3</th>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <table id="table1-detail">
+                            <tr>
+                                <th>Món</th>
+                                <th>SL</th>
+                                <th>Tiền</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </table>
+                        <button class="print-button" onclick="printBill(1)">In hóa đơn</button>
+                    </td>
+                    <td align="center">
+                        <table id="table2-detail">
+                            <tr>
+                                <th>Món</th>
+                                <th>SL</th>
+                                <th>Tiền</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </table>
+                        <button class="print-button" onclick="printBill(2)">In hóa đơn</button>
+                    </td>
+                    <td align="center">
+                        <table id="table3-detail">
+                            <tr>
+                                <th>Món</th>
+                                <th>SL</th>
+                                <th>Tiền</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </table>
+                        <button class="print-button" onclick="printBill(3)">In hóa đơn</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        // Hàm lấy thời gian hiện tại và định dạng theo mẫu "Thứ x, MM/DD/YYYY, HH:MM"
+        function getDateTime() {
+            const date = new Date(); // Tạo đối tượng Date để lấy thời gian hiện tại
+            const days = ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']; // Mảng chứa tên các ngày trong tuần
+            const current_day = days[date.getDay()]; // Lấy tên ngày hiện tại
+            
+            // Định dạng ngày tháng năm
+            const dd = date.getDate().toString().padStart(2, '0'); // Ngày (thêm số 0 nếu cần)
+            const mm = (date.getMonth() + 1).toString().padStart(2, '0'); // Tháng (0-11 nên cần +1)
+            const yyyy = date.getFullYear(); // Năm
+            const hours = date.getHours(); // Giờ
+            const minutes = date.getMinutes().toString().padStart(2, '0'); // Phút (thêm số 0 nếu cần)
+
+            return `${current_day}, ${mm}/${dd}/${yyyy}, ${hours}:${minutes}`; // Trả về chuỗi định dạng
+        }
+
+        // Khi trang web đã tải xong
+        $(document).ready(function() {
+            // Cập nhật hiển thị thời gian
+            $('#current-datetime').text(getDateTime());
+
+            // Xử lý sự kiện khi chọn món
+            $('#dish-select').on('change', function() {
+                if ($(this).val()) {
+                    const tableNumber = parseInt($('#table-select').val());
+                    addDish(tableNumber); // Thêm món vào bàn được chọn
+                }
+            });
+        });
+
+        // Cập nhật thời gian mỗi giây
+        setInterval(function() {
+            $('#current-datetime').text(getDateTime());
+        }, 1000);
+
+        // Đối tượng lưu trữ đơn hàng cho mỗi bàn
+        const orders = {
+            1: [], // Mảng đơn hàng bàn 1
+            2: [], // Mảng đơn hàng bàn 2
+            3: []  // Mảng đơn hàng bàn 3
+        };
+
+        // Hàm thêm món vào đơn hàng của bàn
+        function addDish(tableNumber) {
+            const $dishSelect = $('#dish-select');
+            const [dishName, dishPrice] = $dishSelect.val().split(','); // Tách tên món và giá
+            
+            if (!dishName) return;
+            
+            // Kiểm tra món đã có trong đơn hàng chưa
+            const existingDishIndex = orders[tableNumber].findIndex(dish => dish.name === dishName);
+            
+            if (existingDishIndex !== -1) {
+                // Nếu món đã tồn tại, tăng số lượng
+                orders[tableNumber][existingDishIndex].quantity += 1;
+                orders[tableNumber][existingDishIndex].total = 
+                    orders[tableNumber][existingDishIndex].quantity * parseInt(dishPrice);
+            } else {
+                // Nếu là món mới, thêm vào danh sách
+                orders[tableNumber].push({
+                    name: dishName,
+                    price: parseInt(dishPrice),
+                    quantity: 1,
+                    total: parseInt(dishPrice)
+                });
+            }
+
+            updateOrderTable(tableNumber); // Cập nhật hiển thị
+            $dishSelect.prop('selectedIndex', 0); // Reset lựa chọn về mặc định
+        }
+
+        // Hàm cập nhật hiển thị đơn hàng trên bàn
+        function updateOrderTable(tableNumber) {
+            const $tableDetail = $(`#table${tableNumber}-detail`);
+            let total = 0;
+            
+            // Xóa các dòng cũ (trừ tiêu đề)
+            $tableDetail.find('tr:gt(0)').remove();
+            
+            // Thêm từng món vào bảng
+            orders[tableNumber].forEach((dish, index) => {
+                $tableDetail.append(`
+                    <tr>
+                        <td>${dish.name}</td>
+                        <td><input type="number" value="${dish.quantity}" 
+                            onchange="updateQuantity(${tableNumber}, ${index}, this.value)" 
+                            style="width: 50px;"></td>
+                        <td>${dish.total.toLocaleString()}đ</td>
+                        <td><button onclick="removeDish(${tableNumber}, ${index})">Xóa</button></td>
+                    </tr>
+                `);
+                total += dish.total;
+            });
+            
+            // Thêm dòng tổng tiền nếu có món
+            if (orders[tableNumber].length > 0) {
+                $tableDetail.append(`
+                    <tr>
+                        <td colspan="3"><strong>Tổng tiền:</strong></td>
+                        <td><strong>${total.toLocaleString()}đ</strong></td>
+                    </tr>
+                `);
+            }
+        }
+
+        // Hàm cập nhật số lượng món
+        function updateQuantity(tableNumber, index, newQuantity) {
+            const dish = orders[tableNumber][index];
+            dish.quantity = parseInt(newQuantity);
+            dish.total = dish.quantity * dish.price;
+            updateOrderTable(tableNumber);
+        }
+
+        // Hàm xóa món khỏi đơn hàng
+        function removeDish(tableNumber, index) {
+            orders[tableNumber].splice(index, 1);
+            updateOrderTable(tableNumber);
+        }
+
+        // Hàm in hóa đơn
+        function printBill(tableNumber) {
+            const billWindow = window.open('', '_blank'); // Mở cửa sổ mới
+            // Tạo nội dung hóa đơn với thông tin chi tiết
+            let billContent = `
+                <div class="invoice">
+                    <table>
+                        <tr>
+                            <th colspan="3" align="center"><b>Hóa đơn</b></th>
+                        </tr>
+                        <tr>
+                            <td>Ngày hóa đơn:</td>
+                            <td colspan="2">${getDateTime()}</td>
+                        </tr>
+                        <tr>
+                            <td>Nhân viên:</td>
+                            <td colspan="2">Nguyễn Văn A</td>
+                        </tr>
+                        <tr>
+                            <td>Bàn:</td>
+                            <td colspan="2">${tableNumber}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <table style="width:100%; border-collapse: collapse;">
+                                    <tr>
+                                        <th>Món</th>
+                                        <th>SL</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                    ${orders[tableNumber].map(dish => `
+                                        <tr>
+                                            <td>${dish.name}</td>
+                                            <td>${dish.quantity}</td>
+                                            <td>${dish.total.toLocaleString()} đ</td>
+                                        </tr>
+                                    `).join('')}
+                                    <tr>
+                                        <td colspan="2"><strong>Tổng tiền</strong></td>
+                                        <td><strong>${orders[tableNumber].reduce((sum, dish) => sum + dish.total, 0).toLocaleString()} đ</strong></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+
+            billWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        .invoice {
+                            padding: 20px;
+                            font-family: Arial, sans-serif;
+                            border: 1px solid #ddd;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        th, td {
+                            padding: 8px;
+                            text-align: left;
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${billContent}
+                </body>
+                </html>
+            `);
+            billWindow.document.close();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<title>Excel Pivot Tables - Easy Excel Tutorial</title>
+<meta name="keywords" content="excel pivot tables, insert pivot table, drag fields, pivottable field list, row labels, column labels, values, report filter area, pivottable tools contextual tab, sort pivot table, filter pivot table, change summary calculation, count, sum, two-dimensional pivot table, pivot chart">
+<meta name="description" content="Pivot tables are one of Excel's most powerful features. A pivot table allows you to extract the significance from a large, detailed data set.">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index, follow">
+<meta content="EN-US" name="LANGUAGE">
+<link href="Excel%20Pivot%20Tables%20-%20Tutorial_files/style.css" rel="stylesheet" type="text/css" media="screen">
+<script src="Excel%20Pivot%20Tables%20-%20Tutorial_files/ga.js" async="" type="text/javascript"></script><script async="" src="Excel%20Pivot%20Tables%20-%20Tutorial_files/cbgapi.loaded_0"></script><script gapi_processed="true" type="text/javascript" src="Excel%20Pivot%20Tables%20-%20Tutorial_files/plusone.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="logo">
+				<h2><a href="http://www.excel-easy.com/"><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/excel-tutorial.jpg" alt="Excel Tutorial" title="Excel Tutorial" border="0" height="40" width="44">excel</a></h2>
+			  	<p>#1 <a href="http://www.excel-easy.com/">Excel tutorial</a> on the net</p>
+		  	</div>            
+			<div id="menu">
+				  <ul>
+                  <li><a href="http://www.excel-easy.com/">Excel</a></li>
+                  <li><a href="http://www.excel-easy.com/introduction.html">Introduction</a></li>
+				  <li><a href="http://www.excel-easy.com/basics.html">Basics</a></li>
+				  <li><a href="http://www.excel-easy.com/functions.html">Functions</a></li>
+				  <li class="current_page_item"><a href="http://www.excel-easy.com/data-analysis.html">Data Analysis</a></li>
+                  <li><a href="http://www.excel-easy.com/vba.html">VBA</a></li>
+                  <li class="pro"><a href="http://www.excel-easy.com/examples.html">300 Examples</a></li>
+                  <li><a href="http://www.excel-easy.com/ask-us.html">Ask us</a></li>
+                  </ul>
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<div class="post">
+						<h1 class="title" style="float:left">Pivot Tables</h1>
+						<table>
+                          <tbody><tr>
+                            <td style="padding-left:7px; padding-top:15px"><iframe src="Excel%20Pivot%20Tables%20-%20Tutorial_files/like_002.htm" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe></td>
+                          </tr>
+                        </tbody></table>
+						<div style="clear: both;">&nbsp;</div>
+                      <div class="entry">
+                      <p><a href="#insert-pivot-table">Insert a Pivot Table</a>&nbsp;|&nbsp;<a href="#drag-fields">Drag fields</a>&nbsp;|&nbsp;<a href="#sort">Sort</a>&nbsp;|&nbsp;<a href="#filter">Filter</a>&nbsp;|&nbsp;<a href="#change-summary-calculation">Change Summary Calculation</a>&nbsp;|&nbsp;<a href="#two-dimensional-pivot-table">Two-dimensional Pivot Table</a></p>
+                      <p><strong>Pivot tables</strong> are one of <strong>Excel</strong>'s most powerful features. A pivot table allows you to extract the significance from a large, detailed data set.</p>
+                      <p>Our data set consists of 214 rows and 6 fields. Order ID, Product, Category, Amount, Date and Country.</p>
+                      <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/pivot-table-data.png" alt="Pivot Table Data in Excel" title="Pivot Table Data in Excel"></p>
+                      <h3><a name="insert-pivot-table" id="insert-pivot-table"></a>Insert a Pivot Table</h3>
+              <p>To insert a <strong>pivot table</strong>, execute the following steps.</p>
+              <p>1. Click any single cell inside the data set.</p>
+              <p>2. On the Insert tab, click PivotTable.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/insert-pivot-table.png" alt="Insert Excel Pivot Table" title="Insert Excel Pivot Table"></p>
+              <p>The following dialog box appears. Excel automatically 
+selects the data for you. The default location for a new pivot table is 
+New Worksheet.</p>
+              <p>3. Click OK.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/create-pivot-table-dialog-box.png" alt="Create PivotTable Dialog Box" title="Create PivotTable Dialog Box"></p>
+              <h3><a name="drag-fields" id="drag-fields"></a>Drag fields</h3>
+              <p>The <strong>PivotTable field list</strong> appears. To get the total amount exported of each product, drag the following fields to the different areas.</p>
+              <p>1. Product Field to the Row Labels area.</p>
+              <p>2. Amount Field to the Values area.</p>
+              <p>3. Country Field to the Report Filter area.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/drag-fields-areas.png" alt="Drag Fields to Areas" title="Drag Fields to Areas"></p>
+              <p>Below you can find the pivot table. Bananas are our main export product. That's how easy pivot tables can be!</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/pivot-table.png" alt="Pivot Table" title="Pivot Table" height="330" width="306"></p>
+              <h3><a name="sort" id="sort"></a>Sort</h3>
+              <p>To get Banana at the top of the list, sort the pivot table.</p>
+              <p>1. Click any cell inside the Total column.</p>
+              <p>2. The PivotTable Tools contextual tab activates. On the Options tab, click the Sort Largest to Smallest button (ZA).</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/pivot-table-tools-contextual-tab.png" alt="PivotTable Tools Contextual Tab" title="PivotTable Tools Contextual Tab"></p>
+              <p>Result.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/sorted-pivot-table.png" alt="Sorted Pivot Table" title="Sorted Pivot Table" height="330" width="306"></p>
+              <h3><a name="filter" id="filter"></a>Filter</h3>
+              <p>Because we added the Country field to the Report Filter
+ area, we can filter this pivot table by Country. For example, which 
+products do we export the most to France?</p>
+              <p>1. Click the filter drop-down and select France.</p>
+              <p>Result. Apples are our main export product to France.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/filtered-pivot-table.png" alt="Filtered Pivot Table" title="Filtered Pivot Table" height="330" width="314"></p>
+              <p>Note: you can use the standard filter (triangle next to Product) to only show the totals of specific products.</p>
+              <h3><a name="change-summary-calculation" id="insert-pivot-table5"></a>Change Summary Calculation</h3>
+              <p>By default, Excel summarizes your data by either 
+summing or counting the items. To change the type of calculation that 
+you want to use, execute the following steps.</p>
+              <p>1. Click any cell inside the Total column.</p>
+              <p>2. Right click and click on Value Field Settings...</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/value-field-settings.png" alt="Value Field Settings" title="Value Field Settings"></p>
+              <p>3. Choose the type of calculation you want to use. For example, click Count.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/summarize-value-field-by.png" alt="Summarize Value Field By" title="Summarize Value Field By"></p>
+              <p>4. Click OK.</p>
+              <p>Result. 16 out of the 28 orders to France were 'Apple' orders.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/count.png" alt="Count" title="Count" height="330" width="324"></p>
+              <h3><a name="two-dimensional-pivot-table" id="two-dimensional-pivot-table"></a>Two-dimensional Pivot Table</h3>
+              <p>If you drag a field to the Row Labels area and Column 
+Labels area, you can create a two-dimensional pivot table. For example, 
+to get the total amount exported to each country, of each product, drag 
+the following fields to the different areas.</p>
+              <p>1. Country Field to the Row Labels area.</p>
+              <p>2. Product Field to the Column Labels area.</p>
+              <p>3. Amount Field to the Values area.</p>
+              <p>4. Category Field to the Report Filter area.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/create-two-dimensional-pivot-table.png" alt="Create Two-dimensional Pivot Table" title="Create Two-dimensional Pivot Table" height="409" width="250"></p>
+              <p>Below you can find the two-dimensional pivot table.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/two-dimensional-pivot-table.png" alt="Two-dimensional Pivot Table in Excel" title="Two-dimensional Pivot Table in Excel" height="330" width="604"></p>
+              <p>To easily compare these numbers, create a <a href="http://www.excel-easy.com/examples/pivot-chart.html">pivot chart</a>
+ and apply a filter. Maybe this is one step too far for you at this 
+stage, but it shows you one of the many other powerful pivot table 
+features Excel has to offer.</p>
+              <p><img src="Excel%20Pivot%20Tables%20-%20Tutorial_files/pivot-chart.png" alt="Pivot Chart" title="Pivot Chart" height="311" width="604"></p>
+              <p>Did you find this information helpful? Show your appreciation, vote for us.</p>
+              <p><iframe src="Excel%20Pivot%20Tables%20-%20Tutorial_files/like_002.htm" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe></p>
+              <p>Go to Top: <a href="#">Pivot Tables</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Go to Next Chapter: <a href="http://www.excel-easy.com/data-analysis/tables.html">Tables</a></p>
+</div>
+				  </div>
+                  <div class="post">
+					<div style="clear: both;"></div>
+                    <div class="entrylearn">  
+                  <p align="left"><span class="buttonp"> <a href="#">Learn more about pivot tables, Go to the right &gt;&gt;<br>
+                    </a></span>                  </p></div>
+                  </div>
+                  
+			</div>
+            <div id="sidebar">
+            <p>&nbsp;</p>
+				  <ul><li>
+				      <h3><font color="#FF9900">Learn more, it's easy</font></h3>
+				    </li>
+					  <li><ul>
+                        <li><a href="http://www.excel-easy.com/examples/group-pivot-table-items.html">Group Pivot Table Items</a></li>
+                        <li><a href="http://www.excel-easy.com/examples/multi-level-pivot-table.html">Multi-level Pivot Table</a></li>
+                        <li><a href="http://www.excel-easy.com/examples/frequency-distribution.html">Frequency Distribution</a></li>
+                        <li><a href="http://www.excel-easy.com/examples/pivot-chart.html">Pivot Chart</a></li>
+                        <li><a href="http://www.excel-easy.com/examples/slicers.html">Slicers</a></li>
+                        <li><a href="http://www.excel-easy.com/examples/update-pivot-table.html">Update Pivot Table</a></li>
+                        <li><a href="http://www.excel-easy.com/examples/calculated-field-item.html">Calculated Field/Item</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+			  </div>
+              <div id="sidebar">
+					<ul>
+				  	  <li>
+                        <h3>Download Excel File</h3>
+						  <ul>
+							<li><a href="http://www.excel-easy.com/data-analysis/excel-files/pivot-tables.xls">pivot-tables.xls</a></li>
+                    </ul>
+					  </li>
+				  </ul>
+			  </div>
+              <!-- end #sidebar -->
+			  <div style="clear: both;">&nbsp;</div>
+		  </div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<p>Copyright (c) 2010-2014 www.excel-easy.com. <a href="http://www.excel-easy.com/data-analysis/pivot-tables.html">Excel Pivot Tables</a>. All rights reserved.<br>
+	<a href="http://www.excel-easy.com/">excel 2010 tutorial</a> | <a href="http://www.excel-easy.com/">how to excel</a> | <a href="http://www.excel-easy.com/">microsoft excel 2010</a> | <a href="http://www.excel-easy.com/vba.html">excel macro</a></p>
+</div>
+<!-- end #footer -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15754101-9']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+</body></html>

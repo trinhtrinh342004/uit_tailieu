@@ -1,0 +1,80 @@
+-------------------------CAU 2------------------------------
+0)
+-- Số lượng khách theo mỗi diem den
+SELECT NONEMPTY [DiM_DD].[Ten].MEMBERS ON ROWS,
+	[Measures].[SLKhach] ON COLUMNS
+FROM [Tour]
+
+1) HAVING
+-- Số lượng khách theo mỗi diem den > 10
+SELECT NON EMPTY [DiM_DD].[Ten].MEMBERS 
+HAVING [Measures].[SLKhach] > 10 ON COLUMNS	
+FROM [Tour]
+
+2) FILTER
+-- Tim cac tour co so luong khach > 20 theo thang
+SELECT [Measures].[SLKhach] ON COLUMNS,
+NON EMPTY FILTER 
+	(
+		[Dim_Date].[Thang].MEMBERS,
+		[Measures].[SLKhach] > 20 ON ROWS
+	)
+FROM [Tour]
+
+3) TOPCOUNT 
+-- Tìm 3 điểm đến có CPTour max
+SELECT 
+TOPCOUNT (
+	[Dim_DD].[Ten].children,
+	3,
+	[Measures].[CPTour]
+) ON 0
+FROM [Tour]
+
+-------------------------CAU 3------------------------------
+
+Cau 1:
+SELECT 
+	NON EMPTY {[Measures].[Tour Count]} ON COLUMNS,
+	NON EMPTY {
+		TOPCOUNT(
+			[Dim_LHDL].[LoaiHinhDuLich].Members,
+			1,
+			[Measures].[Tour Count]	
+		)
+	}
+FROM [TOUR]
+WHERE (
+	[Dim Date].[Nam].&[2023],
+	[Dim Date].[Quy].MEMBERS
+)
+
+
+Cau 2:
+SELECT 
+	NON EMPTY [Measures].[Revenue] ON COLUMNS,
+	NON EMPTY {
+		TOPCOUNT(
+			[Dim Tour].[Tour].MEMBERS,
+			3,
+			[Measures].[Revenue]
+		)
+	} ON ROWS
+FROM [TOUR]
+WHERE (
+	[Dim Date].[Nam].&[2022],
+	[Dim Date].[Nam].&[2023],
+)
+
+
+
+
+
+
+
+
+
+
+
+
+

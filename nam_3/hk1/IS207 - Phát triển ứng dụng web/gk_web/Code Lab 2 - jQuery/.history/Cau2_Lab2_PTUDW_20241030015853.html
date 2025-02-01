@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bai2</title>
+  <style>
+    .menu {
+      background-color: #D1FF00;
+      border-collapse: collapse;
+      border: 2px solid #6a8106;
+    }
+
+    td,
+    th {
+      border: 2px solid #6a8106;
+    }
+
+    table .title {
+      font-weight: 600;
+      color: blue;
+    }
+
+    .bill {
+      margin-top: 20px;
+      border-collapse: collapse;
+      background-color: #9BF1F2;
+      border: 4px solid #88a40c;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form method='post'>
+    <table class='menu'>
+      <tr height='30px'>
+        <th colspan='3'>
+          <h2>THỰC ĐƠN</h2>
+        </th>
+      </tr>
+      <tr class='title'>
+        <td>Thức ăn</td>
+        <td>Nước uống</td>
+        <td>Thời điểm</td>
+      </tr>
+      <tr>
+        <td>
+          <select size='7' name="food" id="food" multiple>
+            <option value="bunbo">Bún bò</option>
+            <option value="hutieu">Hủ tiếu</option>
+            <option value="banhcanh">Bánh canh</option>
+            <option value="phobo">Phở bò</option>
+            <option value="nuoi">Nuôi</option>
+            <option value="banhmithit">Bánh mì thịt</option>
+            <option value="banhcuon">Bánh cuốn</option>
+          </select>
+        </td>
+        <td>
+          <select size='7' name="drink" id="drink" multiple>
+            <option value="cfda">Cà phê đá</option>
+            <option value="cfsuada">Cà phê sữa đá</option>
+            <option value="chanhday">Chanh dây</option>
+            <option value="chanhmuoi">Chanh muối</option>
+            <option value="ximuoi">Xí muội</option>
+            <option value="suatuoi">Sữa tươi</option>
+            <option value="camvat">Cam vắt</option>
+          </select>
+        </td>
+        <td width='150px'>
+          <input type="radio" id="banngay" name="time" value="banngay">
+          <label for="banngay">Ban ngày</label><br>
+          <input type="radio" id="bandem" name="time" value="bandem">
+          <label for="bandem">Ban đêm</label><br>
+        </td>
+      </tr>
+      <tr height='30px'>
+        <th colspan='3'><button type="button" onclick='calculateTotal(event)'>Tính tiền</button></th>
+      </tr>
+    </table>
+  </form>
+
+  <table id="bill" class="bill">
+    <thead>
+      <tr class='title'>
+        <th>Các món đã dùng</th>
+        <th>Tiền</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    function calculateTotal(event) {
+      event.preventDefault();
+      let foodTotal = 0;
+      let drinkTotal = 0;
+      const selectedItems = [];
+
+      const foodPriceList = {
+        bunbo: 20000,
+        hutieu: 18000,
+        banhcanh: 17000,
+        phobo: 19000,
+        nuoi: 15000,
+        banhmithit: 12000,
+        banhcuon: 15000
+      };
+
+      const drinkPriceList = {
+        cfda: 12000,
+        cfsuada: 15000,
+        chanhday: 13000,
+        chanhmuoi: 12000,
+        ximuoi: 14000,
+        suatuoi: 13000,
+        camvat: 17000
+      };
+
+      // Convert food selection to jQuery
+      $('#food option:selected').each(function() {
+        const foodName = $(this).text();
+        const foodPrice = foodPriceList[$(this).val()];
+        selectedItems.push({ name: foodName, price: foodPrice });
+        foodTotal += foodPrice;
+      });
+
+      // Convert drink selection to jQuery
+      $('#drink option:selected').each(function() {
+        const drinkName = $(this).text();
+        const drinkPrice = drinkPriceList[$(this).val()];
+        selectedItems.push({ name: drinkName, price: drinkPrice });
+        drinkTotal += drinkPrice;
+      });
+
+      let total = foodTotal + drinkTotal;
+
+      // Convert time check to jQuery
+      if ($('input[name="time"]:checked').val() === "bandem") {
+        total *= 1.1;
+      }
+
+      populateBill(selectedItems, total);
+    }
+
+    function populateBill(selectedItems, total) {
+      const $tableBody = $('#tableBody');
+      $tableBody.empty(); // Clear previous content
+
+      // Add selected items to bill
+      $.each(selectedItems, function(index, item) {
+        $('<tr>')
+          .append($('<td>').text(item.name))
+          .append($('<td>').text(item.price.toFixed(0)))
+          .appendTo($tableBody);
+      });
+
+      // Add total row
+      $('<tr>')
+        .append($('<td>').text('Tổng tiền'))
+        .append($('<td>').text(total.toFixed(0) + ' đồng'))
+        .appendTo($tableBody);
+
+      // Show bill table
+      $('#bill').show();
+    }
+  </script>
+</body>
+
+</html>
